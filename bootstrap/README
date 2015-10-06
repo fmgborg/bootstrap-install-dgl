@@ -10,10 +10,10 @@ set a root password and change sshd configuration or define a sudo
 user before booting the system.
 It is possible to use other ssh daemons with different configurations
 on different ports. The system is prepared to use ssh[2-4]* daemons,
-see /etc/ssh/, /etc/init.d/ and /usr/local/sbin/ for more. Activate
-the new daemons by Debian update-rc.d tool. The Debian safe-upgrade
-procedure might interfere with these settings, thus it need to be
-repeated after each update/upgrade.
+see /etc/ssh/, /etc/init.d/, /etc/default/ and /usr/local/sbin/ for
+more. Activate the new daemons by Debian update-rc.d tool. The Debian
+safe-upgrade procedure might interfere with these settings, thus it
+need to be repeated after each update/upgrade.
 
 #--
 
