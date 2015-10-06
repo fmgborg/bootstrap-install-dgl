@@ -108,6 +108,10 @@ ${CP} -apr ${INPUT_PATH}/* ${OUTPUT_PATH}/
 INPUT_PATH="${BASE_PATH}/master/precustomized"
 ${CP} -apr ${INPUT_PATH}/* ${OUTPUT_PATH}/
 
+# block 06 : [1] Debian Etch Debian.jpg
+INPUT_PATH="${WORK_PATH_TO_BOOTSTRAP}/bootstrap/all/opt"
+${CP} -apr ${INPUT_PATH} ${OUTPUT_PATH}
+
 ${ECHO} -e "${fgred}${bgyellow}Now${normal}: edit configuration files in"
 ${ECHO} -e "${BASE_PATH}/system/customized/etc/""\n"
 ${ECHO} -e '...and edit private ssh config and pub keys'"\n"
