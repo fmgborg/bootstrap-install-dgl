@@ -1,0 +1,72 @@
+This package was debianized by Colin Walters <walters@debian.org> on
+Tue, 22 Oct 2002 15:05:34 -0400.
+
+This package is comprised of bits and pieces from various sources.
+
+Copyright:
+
+The debblue "kit" (composed of the background and the splash) was
+created by Jaap Haitsma (jaap at haitsma dot org) and is licensed
+under the GNU General Public License (see below). They can be
+downloaded from the http://debblue.debian.net/downloads.php web page
+in various formats.
+
+The  Debian swirl  background  images included  in  this package  were
+created by  gfburke@earthlink.net (Gary Burke), and  were derived from
+copyright-free   stock   artwork.    It   can   be   downloaded   from
+http://wm.themes.org, as "Debian.tar.gz".
+
+The   Debian   "bluedeb"   background   was  created   by   Roger   So
+<rogerso@debian.org>, and is under the  terms of the BSD license.  See
+../backgrounds/bluedeb.COPYING for more information.
+
+The debian-background.svg file has been provided by Josselin Mouette
+<joss@debian.org>, and is a derivative work of the open use Debian
+logo, which has the following copyright notice:
+
+<debian-background.svg>
+    Copyright (c) 1999 Software in the Public Interest
+ 
+    This logo or a modified version may be used by anyone to refer to
+    the Debian project, but does not indicate endorsement by the
+    project.
+
+    Note: we would appreciate that you make the image a link to
+    http://www.debian.org/ if you use it on a web page.
+</debian-background.svg>
+
+The   Debian   splash   screen   was   created   by   Mirko   Hufnagel
+<mirko@abitur97.de>, and is placed into the public domain.
+
+The    Debian_red    splash    screen    imagem   was    created    by
+<webanetwork@libero.it>  and is copyright-free.  It can  be downloaded
+from http://art.gnome.org/themes/splash_screens/488.php.
+
+The  EvolvingTux splash  screen was  modified by  Filip  Van Raemdonck
+<mechanix@debian.org>    based    on    a    GPL   work    found    at
+http://www.kde-look.org.
+
+The  debian-security.xcf  file  (and  the resulting  .png  file)  were
+created by Colin Walters <walters@debian.org> from the Debian Open Use
+Logo and a GNOME icon; both are free software.
+
+The  debian-official-logo-small.png image  is  more or  less a  simple
+reformatting of the Debian Official Use Logo.
+
+The .desktop  files included  in this package  were compiled  by Colin
+Walters <walters@debian.org>.
+
+The gnome-debian-sid "kit" including splash/gnome-debian-sid-splash.xcf.gz, 
+splash/gnome-debian-sid-splash.png, wallpapers/gnome-debian-sid-wp.xcf.gz
+and wallpapers/gnome-debian-sid-wp.png were made by Josselin Mouette 
+<joss@debian.org> and Gustavo Franco <stratus@debian.org>.
+
+The following files are Copyright 2006 André Luiz Rodrigues Ferreira and
+licensed under the GPL.
+    - SVG background, backgrounds/debian-blueish-wallpaper.svg.
+    - PNG splash, splash/gnome-splash-curves.png.
+
+The GPL license can be found in plain text format, on Debian systems,
+at /usr/share/common-licenses/GPL.
+
+
