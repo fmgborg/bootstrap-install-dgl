@@ -1,0 +1,20 @@
+#
+
+The file etch/usr/share/images/desktop-base/Debian.jpg is obtained from
+the Debian Etch distribution and contained in package desktop-base. For
+the license see:
+
+http://archive.debian.net/de/etch/x11/desktop-base
+http://archive.debian.net/de/etch/all/desktop-base/filelist
+http://archive.debian.net/changelogs/pool/main/d/desktop-base/desktop-base_4.0.1etch2/desktop-base.copyright
+
+The relevant section:
+| The  Debian swirl  background  images included  in  this package  were
+| created by  gfburke@earthlink.net (Gary Burke), and  were derived from
+| copyright-free   stock   artwork.    It   can   be   downloaded   from
+| http://wm.themes.org, as "Debian.tar.gz".
+
+The server or domain referred to as 'http://wm.themes.org'
+is not available anymore (2015-10-07 01:10 +0200).
+
+# 
