@@ -250,7 +250,10 @@ ${INSTALL} xauth
 ssh-keygen -l -f /etc/ssh/ssh_host_dsa_key >> /root/sshd-chroot-keys.txt
 ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key >> /root/sshd-chroot-keys.txt
 ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key >> /root/sshd-chroot-keys.txt
+ssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key >> /root/sshd-chroot-keys.txt
 #
+LOCAL_FILE="/etc/default/ssh2"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/etc/init.d/ssh2"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/etc/ssh/ssh2d_config"
@@ -258,6 +261,8 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/usr/local/sbin/ssh2d"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #
+LOCAL_FILE="/etc/default/ssh3"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/etc/init.d/ssh3"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/etc/ssh/ssh3d_config"
@@ -265,6 +270,8 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/usr/local/sbin/ssh3d"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #
+LOCAL_FILE="/etc/default/ssh4"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/etc/init.d/ssh4"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/etc/ssh/ssh4d_config"
