@@ -59,9 +59,12 @@ a later time.
 
 #--
 
-2. [legacy, omit this]
+2.
 
-Disable test mode (in shell script) and run
+[legacy, omit this]
+[Disable test mode (in shell script) and run]
+
+Run
 
 /opt/bootstrap/jessie/meta/sbin/customization.sh
 
