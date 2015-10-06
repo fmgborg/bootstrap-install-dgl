@@ -1,0 +1,20 @@
+#
+
+# <target name>			<source device>					<key file>	<options>
+
+#swap1				UUID=04a81d05-5306-4de9-a7e7-97fb9130b7b0	/dev/random	cipher=aes-cbc-essiv:sha256,size=256,swap
+#swap2				/dev/mapper/d0-swapcrypt2			/dev/random	cipher=aes-cbc-essiv:sha256,size=256,swap
+
+# Debian Wheezy
+#thinkpad10crypt		UUID=7bfd8f74-bc76-462e-b315-27e1131f18c7	none		luks
+#helpsys7			UUID=9fbfc2dc-3db3-4b38-8d69-a66781d9bbf4	none		luks
+
+#foo.crypt.lvm			/dev/xvdc1					none		luks,keyscript=/etc/scripts/bootcrypto.sh
+
+# Ubuntu:
+#cryptswap1			/dev/sda6					/dev/urandom	swap,cipher=aes-cbc-essiv:sha256
+
+# 2014-09-28 15:32
+#sda6crypt			/dev/sda6					none		luks
+
+# EOF
