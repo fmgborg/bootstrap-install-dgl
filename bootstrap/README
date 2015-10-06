@@ -1,0 +1,114 @@
+#
+
+This installation method does remove systemd init from Debian
+and assumes vim to be the editor which is to be configured as
+the system's default editor.
+
+Debian Jessie does not permit root ssh login and we do not set any
+root pasword at all. It is mandatory to install root ssh pub keys,
+set a root password and change sshd configuration or define a sudo
+user before booting the system.
+It is possible to use other ssh daemons with different configurations
+on different ports. The system is prepared to use ssh[2-4]* daemons,
+see /etc/ssh/, /etc/init.d/ and /usr/local/sbin/ for more. Activate
+the new daemons by Debian update-rc.d tool. The Debian safe-upgrade
+procedure might interfere with these settings, thus it need to be
+repeated after each update/upgrade.
+
+#--
+
+0.
+
+There are three subtrees of sources in
+
+/opt/bootstrap/jessie/master/
+
+with different meanings:
+
+- generic/		files, which do not need customization
+- precustomized/	files, which depend on customization
+- templates/		files, which need a customization procedure
+
+The customization procedure will provide all files in
+
+/opt/bootstrap/jessie/system/
+
+which is empty or will be cleaned at the beginning of the
+customization procedure. The complete path to pre-install
+a customized system is:
+
+/opt/bootstrap/jessie/system/customized/
+
+#--
+
+1.
+
+Change customization identifier in
+
+/opt/bootstrap/jessie/meta/etc/customizationname
+
+to your needs, default is jdoe. For private usage you might want
+to choose your nickname, firstname or loginname, for other usage
+a short or long version of the company's name may be appropriate,
+e.g. foo, bar or umbrella. Avoid special characters and spaces.
+
+Do not choose a name used by other software projects. A customized
+folder /var/log/${customizationname}/ is created for several files
+as well as /usr/local/etc/${customizationname}/ and maybe more, at
+a later time.
+
+#--
+
+2. [legacy, omit this]
+
+Disable test mode (in shell script) and run
+
+/opt/bootstrap/jessie/meta/sbin/customization.sh
+
+to obtain machine specific customized installation files. Private
+data as specialized root or user ssh config and ssh pub keys are not
+included yet. Put your data in before running (4.).
+
+#--
+
+3.
+
+Edit configuration files in
+
+/opt/bootstrap/jessie/system/etc/
+
+and continue with installation. Be careful with fstab, crypttab
+and some other files which are important to boot the machine. You
+can modify the next installation script to edit those files:
+
+bash /opt/bootstrap/jessie/system/customized/sbin/run-once-stage.00.01-pre-user.sh
+
+ATTENTION: this script installs the script /usr/sbin/policy-rc.d which
+prevents daemons to start inside a chroot, but there are some shenanigans
+with systemd.
+
+Don't run it more than once.
+Mofified configuration files are preserved as .orig only one time.
+
+This script is not executable to prevent it being run by accident.
+
+You can edit EDIT_CONFIGURATION_INTERACTIVE
+to edit configuration files during script run.
+
+#--
+
+4.
+
+The script run-once-stage.00.01-pre-user.sh does not add users and
+does install neither a kernel nor a bootloader. The result is called
+stage.00.01 (other stages include users, kernel, more software).
+
+#--
+
+5.
+
+tbc
+
+#--
+
+# EOF
