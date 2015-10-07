@@ -18,11 +18,11 @@
 # alias rm='rm -i'
 # alias cp='cp -i'
 # alias mv='mv -i'
-# fmg 2014-06-17 15:31
+# fmg 2015-10-08 01:54
 # big ~/.bash_history
 export HISTCONTROL=ignoredups
-export HISTFILESIZE=6144
-export HISTSIZE=6144
+export HISTFILESIZE=8192
+export HISTSIZE=8192
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then

@@ -22,8 +22,10 @@ shopt -s histappend
 # fmg
 #HISTSIZE=1000
 #HISTFILESIZE=2000
-HISTSIZE=6144
-HISTFILESIZE=6144
+#HISTSIZE=6144
+#HISTFILESIZE=6144
+HISTSIZE=8192
+HISTFILESIZE=8192
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
