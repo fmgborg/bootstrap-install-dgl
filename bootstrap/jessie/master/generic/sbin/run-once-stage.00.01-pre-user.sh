@@ -48,8 +48,10 @@ else
 	if [ -f ${SHELLCOLORS_INC} ] ; then
 		echo "found shellcolors.inc : ${SHELLCOLORS_INC}"
 		. ${SHELLCOLORS_INC}
+		SCI="y"
 	else
 		echo "missing shellcolors.inc : ${SHELLCOLORS_INC}"
+		SCI="n"
 	fi
 	if [ -f ${GENERIC_INC} ] ; then
 		echo "found generic.inc : ${GENERIC_INC}"
@@ -92,13 +94,15 @@ esac
 c02-configfile() {
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LF=${LOCAL_FILE}
-if [ -e ${LF} ] ; then
+#if [ -e ${LF} ] ; then
+if [ -e ${IRP}${LF} ] ; then
 	rsync -a "${IRP}${LF}" ${LF}
 	if [ "${ECI}" == "y" ] ; then
 		vim ${LF}
 	fi
 else
-	echo "file not found : ${LF}"
+#	echo "file not found : ${LF}"
+	echo -e "${fgred}file not found${normal} : ${IRP}${LF}"
 fi
 }
 
@@ -308,6 +312,15 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #vi /root/.bash_logout
 LOCAL_FILE="/root/.bash_logout"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+if [ -e /root/.bash_history ] ; then
+	mv /root/.bash_history /root/.bash_history.orig
+	cp -a /root/.bash_history.orig /root/.bash_history
+fi
+#vi /root/.bash_history
+LOCAL_FILE="/root/.bash_history"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+# not : c02-configfile
+#
 # the next lines should be run before first usage of vim
 #LOCAL_FILE="/root/.vimrc"
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
