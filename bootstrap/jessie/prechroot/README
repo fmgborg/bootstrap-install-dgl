@@ -1,0 +1,15 @@
+#
+
+Define your target ressources for the installation: hard disk, usb device,
+RAID, DRBD, crypto container as LUKS, LVM etc. and create the filesystems
+and swap space. Then mount the rootfs to /mnt (you may change this only if
+you know what you're doing), create other mountpoints (mkdir) and mount all
+needed filesystems where they belong.
+
+Done that you're ready to debootstrap the system. In addition to that, the
+script bootstrap/jessie/prechroot/sbin/debotstrap.sh copies some useful files 
+as .bash_history (initialization), .bashrc and vim configuration into root
+user settings. This is useful for a better workflow when you're inside the
+chroot environment.
+
+# EOF
