@@ -20,11 +20,22 @@ FSP="${FULL_SOURCE_PATH}"
 FULL_TARGET_PATH="${CHROOT_TARGET}"
 FTP="${FULL_TARGET_PATH}"
 
+MYSELF="bootstrap"
+COPY_SOFTWARE_SOURCE="/opt/${MYSELF}"
+CSS="${COPY_SOFTWARE_SOURCE}"
+COPY_SOFTWARE_TARGET="${CHROOT_TARGET}/${PRE_BOOTSTRAP}/${MYSELF}"
+CST="${COPY_SOFTWARE_TARGET}"
+
 bootstrap() {
 date
 echo debootstrap ${OPTIONS}
 time debootstrap ${OPTIONS}
 date
+}
+
+copy_bootstrap() {
+echo rsync -au ${CSS}/ ${CST}/
+rsync -au ${CSS}/ ${CST}/
 }
 
 rsync_file() {
