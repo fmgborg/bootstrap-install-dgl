@@ -24,6 +24,10 @@ from hard disk which is faster than network debootstrap). Be aware that
 the bootstrap toolchain is expected to be located in /opt/ and thus the
 full prechroot path is:
 
-     /mnt/opt/bootstrap/jessie/prechroot/
+     /opt/bootstrap/jessie/prechroot/
+
+The copy procedure copies the whole subtree /opt/bootstrap to /mnt/opt/bootstrap
+because it is needed to continue in the chroot environment. It can be used later
+to install a third system from the second and so forth.
 
 # EOF
