@@ -17,41 +17,37 @@ FULL_TARGET_PATH="${CHROOT_TARGET}"
 FTP="${FULL_TARGET_PATH}"
 
 rsync_file() {
-if [ "${RUN}" = "y" ] ; then
-	echo run
-	rsync -au ${FSP}${LF} ${FTP}${LF}
-else
-	echo 'missing permission : actual value RUN="'${RUN}'" should be RUN="y" instead'
-fi
+echo rsync -au ${FSP}${LF} ${FTP}${LF}
+rsync -au ${FSP}${LF} ${FTP}${LF}
 }
 
-echo s : $FSP
-echo t : $FTP
-
+copy_files() {
 LOCAL_FILE="/root/.bashrc"
 LF=${LOCAL_FILE}
-#mv ${FTP}${LF} ${FTP}${LF}.orig
+mv ${FTP}${LF} ${FTP}${LF}.orig
 echo mv ${FTP}${LF} ${FTP}${LF}.orig
-#rsync -au ${FSP}${LF} ${FTP}${LF}
-echo rsync -au ${FSP}${LF} ${FTP}${LF}
 rsync_file
 
 LOCAL_FILE="/root/.bash_history"
 LF=${LOCAL_FILE}
-#rsync -au ${FSP}${LF} ${FTP}${LF}
-echo rsync -au ${FSP}${LF} ${FTP}${LF}
 rsync_file
 
 LOCAL_FILE="/root/.vim"
 LF=${LOCAL_FILE}
-#rsync -au ${FSP}${LF} ${FTP}${LF}
-echo rsync -au ${FSP}${LF} ${FTP}${LF}
 rsync_file
 
 LOCAL_FILE="/root/.vimrc"
 LF=${LOCAL_FILE}
-#rsync -au ${FSP}${LF} ${FTP}${LF}
-echo rsync -au ${FSP}${LF} ${FTP}${LF}
 rsync_file
+}
+
+echo source : $FSP
+echo target : $FTP
+
+if [ "${RUN}" = "y" ] ; then
+	copy_files
+else
+	echo 'missing permission : actual value RUN="'${RUN}'" should be RUN="y" instead'
+fi
 
 # EOF
