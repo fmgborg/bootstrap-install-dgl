@@ -2,8 +2,6 @@
 
 # 2015-10-08
 
-# quick 'n dirty
-
 # safety lock
 RUN="n"
 #RUN="y"
