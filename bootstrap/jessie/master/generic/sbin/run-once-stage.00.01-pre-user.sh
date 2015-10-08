@@ -127,7 +127,7 @@ echo '//Acquire::http::Proxy "http://aptcache:3142/apt-cacher/";'       >> /etc/
 }
 
 f02-use-aptitude() {
-apt-get install aptitude
+apt-get -y install aptitude
 aptitude update
 aptitude safe-upgrade
 }
@@ -187,7 +187,9 @@ ${INSTALL} bridge-utils
 
 f07-safe-orig-config-files-elementary() {
 #FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local inittab issue issue.net motd"
-# no /etc/inittab in Debian Jessie anymore
+# no /etc/inittab in Debian Jessie anymore when using systemd-sysv
+#FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local issue issue.net motd"
+# but since we've installed sysvinit-core /etc/inittab is back
 FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local issue issue.net motd"
 for i in `echo $FILELIST` ; do j="/etc/${i}" ; mv ${j} ${j}.orig ; cp -a ${j}.orig ${j} ; done
 find /etc/ -name "*.orig"
@@ -239,6 +241,8 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #echo --------------------------------------------------------------------------
 # Xen
 #echo vi /etc/inittab
+LOCAL_FILE="/etc/inittab.xen"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #echo --------------------------------------------------------------------------
 }
 
@@ -247,7 +251,8 @@ ${INSTALL} openssl
 ${INSTALL} ca-certificates
 ${INSTALL} ssl-cert
 # no stunnel4 now, maybe later
-aptitude -s install stunnel4
+#aptitude -y -s install stunnel4
+${INSTALL} -s stunnel4
 ${INSTALL} ssh
 ${INSTALL} krb5-locales ncurses-term tcpd
 ${INSTALL} xauth
@@ -322,6 +327,7 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 # not : c02-configfile
 #
 # the next lines should be run before first usage of vim
+# so they were duplicated in f04-install-editor
 #LOCAL_FILE="/root/.vimrc"
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #LOCAL_PATH="/root/.vim/"				# with /

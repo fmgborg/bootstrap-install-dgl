@@ -1,19 +1,20 @@
 #
 
-If you want to do a fresh debootstrap, follow the instructions in
+If you want to do a clean debootstrap, follow the instructions in
 
      bootstrap/jessie/prechroot/README
 
-to prepare the chroot environment.
+to prepare the chroot environment with a debootstrap
+via network or icopy it from a template.
 
 #--
 
 The following instructions are supposed to run in the chroot environment.
 =========================================================================
 
-This installation method does remove systemd init from Debian
-and assumes vim to be the editor which is to be configured as
-the system's default editor.
+This installation method does remove systemd-sysv init from Debian and
+assumes vim to be the editor which is to be configured as the system's
+default editor.
 
 Debian Jessie does not permit root ssh login and we do not set any
 root pasword at all. It is mandatory to install root ssh pub keys,
