@@ -34,8 +34,8 @@ date
 }
 
 copy_bootstrap() {
-echo rsync -au ${CSS}/ ${CST}/
-rsync -au ${CSS}/ ${CST}/
+echo rsync -au --exclude '*system*' --exclude '*garbage*' ${CSS}/ ${CST}/
+rsync -au --exclude '*system*' --exclude '*garbage*' ${CSS}/ ${CST}/
 }
 
 rsync_file() {

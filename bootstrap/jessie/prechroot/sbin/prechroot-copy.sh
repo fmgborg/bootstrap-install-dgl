@@ -21,8 +21,8 @@ COPY_SOFTWARE_TARGET="${CHROOT_TARGET}/${PRE_BOOTSTRAP}/${MYSELF}"
 CST="${COPY_SOFTWARE_TARGET}"
 
 copy_bootstrap() {
-echo rsync -au ${CSS}/ ${CST}/
-rsync -au ${CSS}/ ${CST}/
+echo rsync -au --exclude '*system*' --exclude '*garbage*' ${CSS}/ ${CST}/
+rsync -au --exclude '*system*' --exclude '*garbage*' ${CSS}/ ${CST}/
 }
 
 rsync_file() {
