@@ -33,7 +33,7 @@ INSTALL="aptitude -y install"
 
 # WARNING: do not edit beyond this line unless you really know what you are doing
 
-c00-check-customization() {
+c00_check_customization() {
 echo
 echo "check for : ${CUSTOMIZATION_FILE}"
 if [ ! -e "${CUSTOMIZATION_FILE}" ] ; then
@@ -58,8 +58,8 @@ else
 	if [ -f ${GENERIC_INC} ] ; then
 		echo "found generic.inc : ${GENERIC_INC}"
 		. ${GENERIC_INC}
-		echo -e "found customization :  ${fggreen}${CUSTOMIZATION}${normal}"
-		echo -e "found ${fggreen}${GENERIC_INC}${normal}"
+		${ECHO} -e "found customization :  ${fggreen}${CUSTOMIZATION}${normal}"
+		${ECHO} -e "found ${fggreen}${GENERIC_INC}${normal}"
 	else
 		echo "not found : ${GENERIC_INC}"
 		echo "found customizaton : ${CUSTOMIZATION}"
@@ -70,7 +70,7 @@ else
 fi
 }
 
-c01-check-edit() {
+c01_check_edit() {
 case ${ECI} in
 	y)
 		echo
@@ -93,7 +93,7 @@ esac
 }
 
 
-c02-configfile() {
+c02_configfile() {
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LF=${LOCAL_FILE}
 #if [ -e ${LF} ] ; then
@@ -104,17 +104,17 @@ if [ -e ${IRP}${LF} ] ; then
 	fi
 else
 #	echo "file not found : ${LF}"
-	echo -e "${fgred}file not found${normal} : ${IRP}${LF}"
+	${ECHO} -e "${fgred}file not found${normal} : ${IRP}${LF}"
 fi
 }
 
 
-f00-safe-orig-config-file-apt-sources() {
+f00_safe_orig_config_file_apt_sources() {
 mv /etc/apt/sources.list /etc/apt/sources.list.orig
 cp -a /etc/apt/sources.list.orig /etc/apt/sources.list
 }
 
-f01-prepare-apt() {
+f01_prepare_apt() {
 APT_CONF="/etc/apt/apt.conf"
 if [ -e ${APT_CONF} ] ; then
 	# WARNING: does not work with BSD -- 'cp -p' instead
@@ -128,13 +128,13 @@ echo 'Aptitude::Recommends-Important "false";'                          >> /etc/
 echo '//Acquire::http::Proxy "http://aptcache:3142/apt-cacher/";'       >> /etc/apt/apt.conf
 }
 
-f02-use-aptitude() {
+f02_use_aptitude() {
 apt-get -y install aptitude
 aptitude update
 aptitude safe-upgrade
 }
 
-f03-prepare-environment() {
+f03_prepare_environment() {
 ${INSTALL} locales
 dpkg-reconfigure locales
 dpkg-reconfigure debconf
@@ -152,7 +152,7 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 ${INSTALL} sysvinit-core systemd-sysv-
 }
 
-f04-install-editor() {
+f04_install_editor() {
 ${INSTALL} vim
 update-alternatives --config editor
 LOCAL_FILE="/root/.selected_editor"
@@ -164,18 +164,18 @@ LOCAL_PATH="/root/.vim/"				# with /
 LP=${LOCAL_PATH} && rsync -a "${IRP}${LP}" ${LP}
 }
 
-f05-reconfigure-apt-sources() {
+f05_reconfigure_apt_sources() {
 #vi /etc/apt/sources.list
 LOCAL_FILE="/etc/apt/sources.list"
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #if [ "${ECI}" == "y" ] ; then
 #	vim ${LF}
 #fi
-c02-configfile
+c02_configfile
 aptitude update
 }
 
-f06-install-tools-l01-elementary() {
+f06_install_tools_l01_elementary() {
 ${INSTALL} cryptsetup
 ${INSTALL} busybox
 ${INSTALL} initramfs-tools
@@ -187,7 +187,7 @@ ${INSTALL} lvm2
 ${INSTALL} bridge-utils
 }
 
-f07-safe-orig-config-files-elementary() {
+f07_safe_orig_config_files_elementary() {
 #FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local inittab issue issue.net motd"
 # no /etc/inittab in Debian Jessie anymore when using systemd-sysv
 #FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local issue issue.net motd"
@@ -198,36 +198,36 @@ find /etc/ -name "*.orig"
 #vi /etc/hostname
 LOCAL_FILE="/etc/hostname"
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-c02-configfile
+c02_configfile
 #vi /etc/hosts
 LOCAL_FILE="/etc/hosts"
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-c02-configfile
+c02_configfile
 #vi /etc/fstab
 LOCAL_FILE="/etc/fstab"
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-c02-configfile
+c02_configfile
 #vi /etc/crypttab
 LOCAL_FILE="/etc/crypttab"
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-c02-configfile
+c02_configfile
 #vi /etc/network/interfaces
 LOCAL_FILE="/etc/network/interfaces"
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-c02-configfile
+c02_configfile
 #echo --------------------------------------------------------------------------
 #vi /etc/issue
 LOCAL_FILE="/etc/issue"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-#c02-configfile
+#c02_configfile
 #vi /etc/issue.net
 LOCAL_FILE="/etc/issue.net"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-#c02-configfile
+#c02_configfile
 #
 LOCAL_FILE="/etc/motd"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-#c02-configfile
+#c02_configfile
 #echo --------------------------------------------------------------------------
 # customization is done in function c00...
 #CUSTOMIZATION="fmg"
@@ -235,11 +235,11 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #LOCAL_FILE="/usr/local/sbin/${CUSTOMIZATION}-boot.sh"
 LOCAL_FILE="/usr/local/sbin/boot.sh"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-#c02-configfile
+#c02_configfile
 #vi /etc/rc.local
 LOCAL_FILE="/etc/rc.local"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-#c02-configfile
+#c02_configfile
 #echo --------------------------------------------------------------------------
 # Xen
 #echo vi /etc/inittab
@@ -248,7 +248,7 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #echo --------------------------------------------------------------------------
 }
 
-f08-install-ssh() {
+f08_install_ssh() {
 ${INSTALL} openssl
 ${INSTALL} ca-certificates
 ${INSTALL} ssl-cert
@@ -291,7 +291,7 @@ LOCAL_FILE="/usr/local/sbin/ssh4d"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 }
 
-f09-activate-root-password() {
+f09_activate_root_password() {
 #mv /etc/shadow /etc/shadow.orig
 #cp -a /etc/shadow.orig /etc/shadow
 #passwd
@@ -299,7 +299,7 @@ echo passwd : root password not activated
 # sshd default Debian Jessie: no root password login
 }
 
-f10-activate-root-ssh-key() {
+f10_activate_root_ssh_key() {
 umask 077
 mkdir /root/.ssh
 #vi /root/.ssh/config
@@ -310,7 +310,7 @@ LOCAL_FILE="/root/.ssh/authorized_keys"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 }
 
-f11-root-bash() {
+f11_root_bash() {
 mv /root/.bashrc /root/.bashrc.orig
 cp -a /root/.bashrc.orig /root/.bashrc
 #vi /root/.bashrc
@@ -326,7 +326,7 @@ fi
 #vi /root/.bash_history
 LOCAL_FILE="/root/.bash_history"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-# not : c02-configfile
+# not : c02_configfile
 #
 # the next lines should be run before first usage of vim
 # so they were duplicated in f04-install-editor
@@ -336,7 +336,7 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #LP=${LOCAL_PATH} && rsync -a "${IRP}${LP}" ${LP}
 }
 
-f12-install-tools-l02-basic() {
+f12_install_tools_l02_basic() {
 ${INSTALL} bash-completion
 ${INSTALL} screen
 ${INSTALL} tmux
@@ -372,7 +372,7 @@ apt-file update
 ${INSTALL} apt-rdepends
 }
 
-f13-timesync() {
+f13_timesync() {
 ${INSTALL} ntpdate
 ${INSTALL} lockfile-progs
 #
@@ -415,7 +415,7 @@ if [ "${ECI}" == "y" ] ; then
 fi
 }
 
-f14-fuse() {
+f14_fuse() {
 ${INSTALL} xml-core
 ${INSTALL} shared-mime-info
 ${INSTALL} libglib2.0-data xdg-user-dirs
@@ -429,18 +429,18 @@ ${INSTALL} ecryptfs-utils # keyutils{a} libecryptfs0{a} libnss3-1d libtspi1{a}
 # dbus hicolor-icon-theme libgtk2.0-bin
 }
 
-f15-who-uses-ressources() {
+f15_who_uses_ressources() {
 ${INSTALL} lsof
 ${INSTALL} psmisc
 }
 
-f16-install-sudo() {
+f16_install_sudo() {
 ${INSTALL} sudo
 mv /etc/sudoers /etc/sudoers.orig
 cp -a /etc/sudoers.orig /etc/sudoers
 }
 
-f17-skeleton() {
+f17_skeleton() {
 mkdir /etc/skel/.ssh
 touch /etc/skel/.ssh/authorized_keys
 #
@@ -465,50 +465,50 @@ LOCAL_FILE="/etc/skel/.bashrc"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 }
 
-stage-00-01-pre-user() {
+stage_00_01_pre_user() {
 echo
 echo --------------------------------------------------------------------------
 echo 1st 2015-10-05 16:09 chroot
 echo --------------------------------------------------------------------------
-c00-check-customization
-c01-check-edit
+c00_check_customization
+c01_check_edit
 echo --------------------------------------------------------------------------
 #f0-safe-orig-config-files
-f00-safe-orig-config-file-apt-sources
+f00_safe_orig_config_file_apt_sources
 echo --------------------------------------------------------------------------
-f01-prepare-apt
+f01_prepare_apt
 echo --------------------------------------------------------------------------
-f02-use-aptitude
+f02_use_aptitude
 echo --------------------------------------------------------------------------
-f03-prepare-environment
+f03_prepare_environment
 echo --------------------------------------------------------------------------
-f04-install-editor
+f04_install_editor
 echo --------------------------------------------------------------------------
-f05-reconfigure-apt-sources
+f05_reconfigure_apt_sources
 echo --------------------------------------------------------------------------
-f06-install-tools-l01-elementary
+f06_install_tools_l01_elementary
 echo --------------------------------------------------------------------------
-f07-safe-orig-config-files-elementary
+f07_safe_orig_config_files_elementary
 echo --------------------------------------------------------------------------
-f08-install-ssh
+f08_install_ssh
 echo --------------------------------------------------------------------------
-f09-activate-root-password
+f09_activate_root_password
 echo --------------------------------------------------------------------------
-f10-activate-root-ssh-key
+f10_activate_root_ssh_key
 echo --------------------------------------------------------------------------
-f11-root-bash
+f11_root_bash
 echo --------------------------------------------------------------------------
-f12-install-tools-l02-basic
+f12_install_tools_l02_basic
 echo --------------------------------------------------------------------------
-f13-timesync
+f13_timesync
 echo --------------------------------------------------------------------------
-f14-fuse
+f14_fuse
 echo --------------------------------------------------------------------------
-f15-who-uses-ressources
+f15_who_uses_ressources
 echo --------------------------------------------------------------------------
-f16-install-sudo
+f16_install_sudo
 echo --------------------------------------------------------------------------
-f17-skeleton
+f17_skeleton
 echo --------------------------------------------------------------------------
 echo --------------------------------------------------------------------------
 echo stage.00.01-pre-user
@@ -517,12 +517,12 @@ echo --------------------------------------------------------------------------
 echo 'python?'
 echo --------------------------------------------------------------------------
 echo
-echo -e "${fgred}you might wan't to set a root password now${normal}"
+${ECHO} -e "${fgred}you might wan't to set a root password now${normal}"
 echo
 echo --------------------------------------------------------------------------
 echo
 }
 
-stage-00-01-pre-user
+stage_00_01_pre_user
 
 # EOF

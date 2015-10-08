@@ -23,7 +23,11 @@ MPC=${MAC_PREFIX_CUSTOMIZED}
 
 LANG=C
 
-. /usr/local/etc/${CUSTOMIZATION}/shellcolors.inc
+SCI="/usr/local/etc/${CUSTOMIZATION}/shellcolors.inc"
+if [ -e ${SCI} ; then
+	#. /usr/local/etc/${CUSTOMIZATION}/shellcolors.inc
+	. ${SCI}
+fi
 
 PATH="${PATH}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 WHICH=`which which`
