@@ -1,5 +1,16 @@
 #
 
+If you want to do a fresh debootstrap, follow the instructions in
+
+     bootstrap/jessie/prechroot/README
+
+to prepare the chroot environment.
+
+#--
+
+The following instructions are supposed to run in the chroot environment.
+=========================================================================
+
 This installation method does remove systemd init from Debian
 and assumes vim to be the editor which is to be configured as
 the system's default editor.

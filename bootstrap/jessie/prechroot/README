@@ -15,12 +15,14 @@ copies some useful files as .bash_history (initialization), .bashrc and the
 vim configuration into root's users' settings.  This is useful for a better
 workflow when you're inside the chroot environment.
 
-As an early version of this idea, the script
+As an simpler version of this idea, the script
 
-     bootstrap/jessie/prechroot/sbin/pre-chroot-copy-qnd.sh 
+     bootstrap/jessie/prechroot/sbin/prechroot-copy.sh 
 
-copies the files without debootstrap. Be aware that the bootstrap toolchain
-is expected to be located in /opt/ and thus the full prechroot path is:
+copies the files without debootstrap (you can use a debootstrap template
+from hard disk which is faster than network debootstrap). Be aware that
+the bootstrap toolchain is expected to be located in /opt/ and thus the
+full prechroot path is:
 
      /mnt/opt/bootstrap/jessie/prechroot/
 
