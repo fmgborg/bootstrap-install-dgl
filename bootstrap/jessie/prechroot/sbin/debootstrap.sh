@@ -19,13 +19,19 @@ date
 }
 
 copy_files() {
-echo /root/.bash_history
-echo /root/.bashrc
+echo 'TODO:'
+echo '/root/.bash_history'
+echo '/root/.bashrc'
 echo '/root/.vim*'
 }
 
-#bootstrap
-copy_files
+if [ "${RUN}" = "y" ] ; then
+	echo run
+	#bootstrap
+	copy_files
+else
+	echo 'missing permission : actual value RUN="'${RUN}'" should be RUN="y" instead'
+fi
 
 
 # EOF
