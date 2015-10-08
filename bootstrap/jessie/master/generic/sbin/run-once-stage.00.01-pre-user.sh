@@ -3,11 +3,13 @@
 # multipurpose installation script
 # author:		Frank Guthausen
 # date:			2008-2015
-# last modification:	2015-10-05
+# this structure:	2015-10-05
+# last modification:	2015-10-09
 
 PATH="${PATH}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # Change this flag to edit some configuration files interactively or not.
+# safety lock
 #EDIT_CONFIGURATION_INTERACTIVE="n"
 #EDIT_CONFIGURATION_INTERACTIVE="y"
 EDIT_CONFIGURATION_INTERACTIVE="undefined"
