@@ -5,7 +5,7 @@ If you want to do a clean debootstrap, follow the instructions in
      bootstrap/jessie/prechroot/README
 
 to prepare the chroot environment with a debootstrap
-via network or icopy it from a template.
+via network or copy/rsync it from a prepared template.
 
 #--
 
