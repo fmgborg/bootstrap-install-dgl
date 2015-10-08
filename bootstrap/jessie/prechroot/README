@@ -7,9 +7,21 @@ only if you know what you're doing), create other mountpoints (mkdir) and
 mount all later needed/wanted filesystems where they belong.
 
 Done that you're ready to debootstrap the system. In addition to that, the
-script bootstrap/jessie/prechroot/sbin/debotstrap.sh copies some useful files 
-as .bash_history (initialization), .bashrc and vim configuration into root
-user settings. This is useful for a better workflow when you're inside the
-chroot environment.
+script
+
+     bootstrap/jessie/prechroot/sbin/debootstrap.sh
+
+copies some useful files as .bash_history (initialization), .bashrc and the
+vim configuration into root's users' settings.  This is useful for a better
+workflow when you're inside the chroot environment.
+
+As an early version of this idea, the script
+
+     bootstrap/jessie/prechroot/sbin/pre-chroot-copy-qnd.sh 
+
+copies the files without debootstrap. Be aware that the bootstrap toolchain
+is expected to be located in /opt/ and thus the full prechroot path is:
+
+     /mnt/opt/bootstrap/jessie/prechroot/
 
 # EOF
