@@ -38,7 +38,7 @@ ${ECHO} -e "\nChoose a configuration name first, then edit"
 ${ECHO} -e "${BASE_PATH}/meta/etc/customizationname\n"
 ${ECHO} -e "customizationname : ${fggreen}${CUSTOMIZATION_NAME}${normal}\n"
 
-if [ "${TESTONLY}" == "y" ] ; then
+if [ "${TESTONLY}" = "y" ] ; then
 	exit 1
 fi
 
