@@ -411,7 +411,7 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #0-59/2  *	*	*	*	/usr/local/sbin/alive.sh
 LOCAL_FILE="/var/spool/cron/crontabs/root"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
-if [ "${ECI}" == "y" ] ; then
+if [ "${ECI}" = "y" ] ; then
 	crontab -e
 fi
 }
