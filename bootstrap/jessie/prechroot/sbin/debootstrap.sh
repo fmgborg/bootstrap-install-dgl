@@ -54,13 +54,14 @@ LOCAL_FILE="/root/.bash_history"
 LF=${LOCAL_FILE}
 rsync_file
 
-LOCAL_FILE="/root/.vim"
-LF=${LOCAL_FILE}
-rsync_file
-
-LOCAL_FILE="/root/.vimrc"
-LF=${LOCAL_FILE}
-rsync_file
+# vim configuration has effects on vim.tiny
+#LOCAL_FILE="/root/.vim"
+#LF=${LOCAL_FILE}
+#rsync_file
+#
+#LOCAL_FILE="/root/.vimrc"
+#LF=${LOCAL_FILE}
+#rsync_file
 }
 
 if [ "${RUN}" = "y" ] ; then
