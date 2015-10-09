@@ -36,11 +36,21 @@ corresponding locations in /mnt where they are needed:
 
      /opt/bootstrap/jessie/master/generic/root/bin/chrootenv.sh on
 
+If you use a system which is installed by this method, the
+script is already available in /root/bin/ and you can run:
+
+     /root/bin/chrootenv.sh on
+
 Now you can 'chroot /mnt' into the chroot environment and continue as described
 in the bootstrap/README file. When you're done inside chroot, exit with CTRL+D
 and umount system's ressources with:
 
      /opt/bootstrap/jessie/master/generic/root/bin/chrootenv.sh off
+
+If you use a system which is installed by this method, the
+script is already available in /root/bin/ and you can run:
+
+     /root/bin/chrootenv.sh off
 
 ATTENTION:
 Be aware that the software location in /opt and the chroot mount point /mnt
