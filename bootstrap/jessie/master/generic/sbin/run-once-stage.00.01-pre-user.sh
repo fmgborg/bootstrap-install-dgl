@@ -365,7 +365,8 @@ ${INSTALL} libpod-latex-perl
 ${INSTALL} libterm-ui-perl
 ${INSTALL} libtext-soundex-perl rename
 # fmg todo 2015-02-25
-aptitude -s install iso-codes lsb-release # so war das bei Wheezy
+#aptitude -s install iso-codes lsb-release # so war das bei Wheezy
+${INSTALL} -s iso-codes lsb-release # so war das bei Wheezy
 apt-file update
 # test apt-rdepends
 # check apt-rdepends here
