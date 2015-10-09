@@ -98,9 +98,14 @@ can modify the next installation script to edit those files:
 
 bash /opt/bootstrap/jessie/system/customized/sbin/run-once-stage.00.01-pre-user.sh
 
+or
+
+sh /opt/bootstrap/jessie/system/customized/sbin/run-once-stage.00.01-pre-user.sh
+
 ATTENTION: this script installs the script /usr/sbin/policy-rc.d which
 prevents daemons to start inside a chroot, but there are some shenanigans
-with systemd.
+with systemd-sysv. Before /usr/sbin/policy-rc.d is installed, the default
+systemd-sysv is removed.
 
 Don't run it more than once.
 Mofified configuration files are preserved as .orig only one time.
