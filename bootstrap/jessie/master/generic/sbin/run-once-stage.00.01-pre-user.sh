@@ -99,7 +99,7 @@ LF=${LOCAL_FILE}
 #if [ -e ${LF} ] ; then
 if [ -e ${IRP}${LF} ] ; then
 	rsync -a "${IRP}${LF}" ${LF}
-	if [ "${ECI}" == "y" ] ; then
+	if [ "${ECI}" = "y" ] ; then
 		vim ${LF}
 	fi
 else
