@@ -24,7 +24,7 @@ MPC=${MAC_PREFIX_CUSTOMIZED}
 LANG=C
 
 SCI="/usr/local/etc/${CUSTOMIZATION}/shellcolors.inc"
-if [ -e ${SCI} ; then
+if [ -e ${SCI} ] ; then
 	#. /usr/local/etc/${CUSTOMIZATION}/shellcolors.inc
 	. ${SCI}
 fi
