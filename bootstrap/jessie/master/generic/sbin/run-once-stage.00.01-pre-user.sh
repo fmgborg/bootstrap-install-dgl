@@ -75,11 +75,13 @@ case ${ECI} in
 	y)
 		echo
 		echo "edit configuration interactively : yes"
+		INSTALL="aptitude install"
 		echo
 	;;
 	n)
 		echo
 		echo "edit configuration interactively : no"
+		INSTALL="aptitude -y install"
 		echo
 	;;
 	*)
