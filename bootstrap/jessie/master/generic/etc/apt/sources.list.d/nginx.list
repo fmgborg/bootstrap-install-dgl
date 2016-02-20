@@ -1,0 +1,8 @@
+#
+
+# nginx
+# http://nginx.org/en/linux_packages.html
+#deb		http://nginx.org/packages/debian/ jessie nginx
+#deb-src	http://nginx.org/packages/debian/ jessie nginx
+
+#
