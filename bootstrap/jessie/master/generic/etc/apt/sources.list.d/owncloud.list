@@ -2,5 +2,9 @@
 
 # Owncloud
 # opensuse
+# https://software.opensuse.org/download/package?project=isv:ownCloud:desktop&package=owncloud-client
+# apt-get install owncloud-client
+# aptitude install owncloud-client
+#deb	http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_8.0/ /
 
 #
