@@ -32,7 +32,4 @@ deb-src		http://ftp.debian.org/debian jessie main
 # Owncloud
 # opensuse
 
-# ZFS
-# http://zfsonlinux.org/debian.html
-
 #
