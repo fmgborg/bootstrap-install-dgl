@@ -19,8 +19,3 @@ deb-src		http://ftp.debian.org/debian jessie main
 #deb-src	http://security.debian.org/ jessie/updates non-free
 
 #
-
-# Owncloud
-# opensuse
-
-#
