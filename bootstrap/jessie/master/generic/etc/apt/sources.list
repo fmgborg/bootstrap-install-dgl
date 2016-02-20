@@ -20,12 +20,6 @@ deb-src		http://ftp.debian.org/debian jessie main
 
 #
 
-# Code::Blocks
-# http://apt.jenslody.de/
-# http://wiki.tuxbox.org/Benutzer:Tijuca
-#deb		http://apt.jenslody.de/testing jessie main
-#deb-src	http://apt.jenslody.de/testing jessie main
-
 # ProxMox VE
 # http://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_Wheezy
 

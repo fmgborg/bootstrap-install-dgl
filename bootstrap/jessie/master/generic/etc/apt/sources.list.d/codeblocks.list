@@ -1,0 +1,9 @@
+#
+
+# Code::Blocks
+# http://apt.jenslody.de/
+# http://wiki.tuxbox.org/Benutzer:Tijuca
+#deb		http://apt.jenslody.de/testing jessie main
+#deb-src	http://apt.jenslody.de/testing jessie main
+
+#
