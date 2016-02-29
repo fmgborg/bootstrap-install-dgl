@@ -185,6 +185,7 @@ ${INSTALL} kbd
 ${INSTALL} console-data
 ${INSTALL} console-common
 ${INSTALL} console-setup
+dpkg-reconfigure console-setup
 ${INSTALL} lvm2
 ${INSTALL} bridge-utils
 }
