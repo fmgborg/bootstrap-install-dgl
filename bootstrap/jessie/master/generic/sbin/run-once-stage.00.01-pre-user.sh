@@ -269,10 +269,11 @@ ${INSTALL} -s stunnel4
 ${INSTALL} ssh
 ${INSTALL} krb5-locales ncurses-term tcpd
 ${INSTALL} xauth
-ssh-keygen -l -f /etc/ssh/ssh_host_dsa_key >> /root/sshd-chroot-keys.txt
-ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key >> /root/sshd-chroot-keys.txt
-ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key >> /root/sshd-chroot-keys.txt
-ssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key >> /root/sshd-chroot-keys.txt
+FINGERPRINTLOG="/root/sshd-chroot-keys.txt"
+ssh-keygen -l -f /etc/ssh/ssh_host_dsa_key	>> ${FINGERPRINTLOG}
+ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key	>> ${FINGERPRINTLOG}
+ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key	>> ${FINGERPRINTLOG}
+ssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key	>> ${FINGERPRINTLOG}
 #
 LOCAL_FILE="/etc/default/ssh2"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
@@ -300,6 +301,10 @@ LOCAL_FILE="/etc/ssh/ssh4d_config"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/usr/local/sbin/ssh4d"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+#
+update-rc.d ssh2 defaults
+update-rc.d ssh3 defaults
+update-rc.d ssh4 defaults
 }
 
 f09_activate_root_password() {
