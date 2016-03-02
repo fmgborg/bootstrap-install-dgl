@@ -191,11 +191,15 @@ ${INSTALL} bridge-utils
 }
 
 f07_safe_orig_config_files_elementary() {
+# mountpoint for / via bind, optional used in fstab
+LOOPBACKDIR="/srv/loopback"
+mkdir ${LOOPBACKDIR}
+#
 #FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local inittab issue issue.net motd"
 # no /etc/inittab in Debian Jessie anymore when using systemd-sysv
 #FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local issue issue.net motd"
 # but since we've installed sysvinit-core /etc/inittab is back
-FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local issue issue.net motd"
+FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local inittab issue issue.net motd"
 for i in `echo $FILELIST` ; do j="/etc/${i}" ; mv ${j} ${j}.orig ; cp -a ${j}.orig ${j} ; done
 find /etc/ -name "*.orig"
 #vi /etc/hostname
@@ -219,6 +223,10 @@ LOCAL_FILE="/etc/network/interfaces"
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 c02_configfile
 #echo --------------------------------------------------------------------------
+#
+LOCAL_FILE="/etc/inittab"
+c02_configfile
+#
 #vi /etc/issue
 LOCAL_FILE="/etc/issue"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
