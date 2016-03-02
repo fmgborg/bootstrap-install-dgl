@@ -1,6 +1,7 @@
 #! /bin/sh
 
-# 2015-10-06 18:39
+# created:	2015-10-06 18:39
+# modified:	2016-03-02
 
 # No MAC prefix with Xen
 
@@ -42,6 +43,7 @@ CUT=`${WHICH} cut`
 DATE=`${WHICH} date`
 ECHO=`${WHICH} echo`
 FIND=`${WHICH} find`
+GIT=`${WHICH} git`
 IFCONFIG=`${WHICH} ifconfig`
 IP=`${WHICH} ip`
 IPTABLES=`${WHICH} iptables`
