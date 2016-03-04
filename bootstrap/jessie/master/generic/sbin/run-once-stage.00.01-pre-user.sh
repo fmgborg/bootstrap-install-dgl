@@ -128,6 +128,7 @@ echo 'APT::Install-Recommends "0";'                                     >> /etc/
 echo 'APT::Install-Suggests "0";'                                       >> /etc/apt/apt.conf
 echo 'Aptitude::Recommends-Important "false";'                          >> /etc/apt/apt.conf
 echo '//Acquire::http::Proxy "http://aptcache:3142/apt-cacher/";'       >> /etc/apt/apt.conf
+echo 'Acquire::ForceIPv4 "true";'					>> /etc/apt/apt.conf.d/99force-ipv4
 }
 
 f02_use_aptitude() {
