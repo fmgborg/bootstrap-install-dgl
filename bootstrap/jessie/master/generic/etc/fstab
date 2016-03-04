@@ -6,32 +6,32 @@
 # device; this may be used with UUID= as a more robust way to name devices
 # that works even if disks are added and removed. See fstab(5).
 #
-# <file system>					<mount point>	<type>	<options>		<dump>	<pass>
-proc						/proc		proc	defaults		0	0
-/dev/xvda1					/		ext3	errors=remount-ro	0	1
-#UUID=e0f9d8bd-084a-4dec-bc92-237dce2fbe02	/boot		ext3	defaults		0	2
+# <file system>					<mount point>	<type>		<options>		<dump>	<pass>
+proc						/proc		proc		defaults		0	0
+/dev/xvda1					/		ext3		errors=remount-ro	0	1
+#UUID=e0f9d8bd-084a-4dec-bc92-237dce2fbe02	/boot		ext3		defaults		0	2
 
-#/dev/mapper/dom0a5-usr				/usr		ext3	defaults		0	2
-#/dev/mapper/dom0a5-opt				/opt		ext3	defaults		0	2
-#/dev/mapper/dom0a5-usrlocal			/usr/local	ext3	defaults		0	2
-#/dev/mapper/dom0a5-optlocal			/opt/local	ext3	defaults		0	2
-#/dev/mapper/dom0a5-var				/var		ext3	defaults		0	2
-#/dev/mapper/dom0a5-tmp				/tmp		ext3	defaults		0	2
-#/dev/mapper/dom0a5-srv				/srv		ext3	defaults		0	2
-#/dev/mapper/dom0a5-home			/home		ext3	defaults		0	2
+#/dev/mapper/dom0a5-usr				/usr		ext3		defaults		0	2
+#/dev/mapper/dom0a5-opt				/opt		ext3		defaults		0	2
+#/dev/mapper/dom0a5-usrlocal			/usr/local	ext3		defaults		0	2
+#/dev/mapper/dom0a5-optlocal			/opt/local	ext3		defaults		0	2
+#/dev/mapper/dom0a5-var				/var		ext3		defaults		0	2
+#/dev/mapper/dom0a5-tmp				/tmp		ext3		defaults		0	2
+#/dev/mapper/dom0a5-srv				/srv		ext3		defaults		0	2
+#/dev/mapper/dom0a5-home			/home		ext3		defaults		0	2
 
-#/dev/mapper/swap0				none		swap	sw			0	0
-#/dev/mapper/swap1				none		swap	defaults,pri=1		0	0
+#/dev/mapper/swap0				none		swap		sw			0	0
+#/dev/mapper/swap1				none		swap		defaults,pri=1		0	0
 
-/dev/xvdb1					none		swap	defaults,pri=1		0	0
-#/dev/xvdb2					none		swap	defaults,pri=2		0	0
-#/dev/xvdb3					none		swap	defaults,pri=3		0	0
-#/dev/xvdb4					none		swap	defaults,pri=4		0	0
+/dev/xvdb1					none		swap		defaults,pri=1		0	0
+#/dev/xvdb2					none		swap		defaults,pri=2		0	0
+#/dev/xvdb3					none		swap		defaults,pri=3		0	0
+#/dev/xvdb4					none		swap		defaults,pri=4		0	0
 
-#/dev/scd0					/media/cdrom0	udf,iso9660 user,noauto		0	0
-#/dev/fd0					/media/floppy0	auto	rw,user,noauto		0	0
+#/dev/scd0					/media/cdrom0	udf,iso9660	user,noauto		0	0
+#/dev/fd0					/media/floppy0	auto		rw,user,noauto		0	0
 
 ## /boot was on /dev/sda2 during installation
-#UUID=d640b180-1ba9-4c3b-8e49-89e5aa1154bc	/boot		ext3	defaults		0	2
+#UUID=d640b180-1ba9-4c3b-8e49-89e5aa1154bc	/boot		ext3		defaults		0	2
 
 # EOF
