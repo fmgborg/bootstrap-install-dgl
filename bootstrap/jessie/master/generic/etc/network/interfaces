@@ -4,46 +4,50 @@
 auto lo
 iface lo inet loopback
 
-# xen network with nat and gateway
+# DHCP
 auto eth0
-iface eth0 inet static
-        address 10.1.1.11
-        network 10.1.1.255
-        netmask 255.255.255.0
-        broadcast 10.1.1.255
-        gateway 10.1.1.254
+iface eth0 inet dhcp
+
+# xen network with nat and gateway
+#auto eth0
+#iface eth0 inet static
+#	address 10.1.1.11
+#	network 10.1.1.255
+#	netmask 255.255.255.0
+#	broadcast 10.1.1.255
+#	gateway 10.1.1.254
 
 # auto eth1
 # iface eth1 inet static
-#       address 62.112.49.42
-#       network 62.112.49.0
-#       netmask 255.255.255.0
-#       broadcast 62.112.49.255
-# #     gateway 62.112.49.1
+# 	address 10.112.49.42
+# 	network 10.112.49.0
+# 	netmask 255.255.255.0
+# 	broadcast 10.112.49.255
+# #	gateway 10.112.49.1
 
 # xen internal network, no nat and no gateway
 auto eth2
 iface eth2 inet static
-        address 10.192.168.11
-        network 10.192.168.255
-        netmask 255.255.255.0
-        broadcast 10.192.168.255
+	address 10.192.168.11
+	network 10.192.168.255
+	netmask 255.255.255.0
+	broadcast 10.192.168.255
 
 #auto eth3
 #iface eth3 inet manual
 #
 #auto br2
 #iface br2 inet static
-#       address 192.168.1.42
-#       network 192.168.1.0
-#       netmask 255.255.255.128
-#       broadcast 192.168.1.127
-#       gateway 192.168.1.1
-#       bridge_ports eth2
-#       bridge_fd 9
-#       bridge_hello 2
-#       bridge_maxage 12
-#       bridge_stp off
+#	address 192.168.1.42
+#	network 192.168.1.0
+#	netmask 255.255.255.128
+#	broadcast 192.168.1.127
+#	gateway 192.168.1.1
+#	bridge_ports eth2
+#	bridge_fd 9
+#	bridge_hello 2
+#	bridge_maxage 12
+#	bridge_stp off
 
 # # The primary network interface
 # allow-hotplug eth3
