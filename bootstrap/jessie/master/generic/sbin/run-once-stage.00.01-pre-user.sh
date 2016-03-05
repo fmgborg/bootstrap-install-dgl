@@ -340,12 +340,19 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #vi /root/.bash_logout
 LOCAL_FILE="/root/.bash_logout"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+#
 if [ -e /root/.bash_history ] ; then
 	mv /root/.bash_history /root/.bash_history.orig
 	cp -a /root/.bash_history.orig /root/.bash_history
 fi
 #vi /root/.bash_history
-LOCAL_FILE="/root/.bash_history"
+#
+# rewriting /root/.bash_history is too aggressive
+#LOCAL_FILE="/root/.bash_history"
+#LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+## not : c02_configfile
+#
+LOCAL_FILE="/root/.bash_history.template"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 # not : c02_configfile
 #
