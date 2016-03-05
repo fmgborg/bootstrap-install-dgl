@@ -547,7 +547,7 @@ echo --------------------------------------------------------------------------
 echo 'python?'
 echo --------------------------------------------------------------------------
 echo
-${ECHO} -e "${fgred}you might wan't to set a root password now${normal}"
+${ECHO} -e "${fgred}you might want to set a root password now${normal}"
 echo
 echo --------------------------------------------------------------------------
 echo
