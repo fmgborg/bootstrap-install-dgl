@@ -241,6 +241,10 @@ LOCAL_FILE="/etc/motd"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #c02_configfile
 #echo --------------------------------------------------------------------------
+# getaddressinfo
+LOCAL_FILE="/etc/gai.conf"
+c02_configfile
+#echo --------------------------------------------------------------------------
 # customization is done in function c00...
 #CUSTOMIZATION="fmg"
 #CUSTOMIZATION=`cat "${CUSTOMIZATION_FILE}"`
