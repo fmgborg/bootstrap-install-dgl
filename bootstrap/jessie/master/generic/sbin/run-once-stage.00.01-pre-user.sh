@@ -129,6 +129,11 @@ echo 'APT::Install-Suggests "0";'                                       >> /etc/
 echo 'Aptitude::Recommends-Important "false";'                          >> /etc/apt/apt.conf
 echo '//Acquire::http::Proxy "http://aptcache:3142/apt-cacher/";'       >> /etc/apt/apt.conf
 echo 'Acquire::ForceIPv4 "true";'					>> /etc/apt/apt.conf.d/99force-ipv4
+# getaddressinfo
+LOCAL_FILE="/etc/gai.conf"
+LF=${LOCAL_FILE}
+j=${LF} ; mv ${j} ${j}.orig ; cp -a ${j}.orig ${j}
+cp -a "${IRP}${LF}" ${LF}
 }
 
 f02_use_aptitude() {
@@ -240,10 +245,6 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/etc/motd"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #c02_configfile
-#echo --------------------------------------------------------------------------
-# getaddressinfo
-LOCAL_FILE="/etc/gai.conf"
-c02_configfile
 #echo --------------------------------------------------------------------------
 # customization is done in function c00...
 #CUSTOMIZATION="fmg"
