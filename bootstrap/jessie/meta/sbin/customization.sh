@@ -116,4 +116,6 @@ ${ECHO} -e "${fgred}${bgyellow}Now${normal}: edit configuration files in"
 ${ECHO} -e "${BASE_PATH}/system/customized/etc/""\n"
 ${ECHO} -e '...and edit private ssh config and pub keys'"\n"
 
+${ECHO} -e 'edit /opt/bootstrap/jessie/system/customized/sbin/run-once-stage.00.01-pre-user.sh'"\n"
+
 # EOF
