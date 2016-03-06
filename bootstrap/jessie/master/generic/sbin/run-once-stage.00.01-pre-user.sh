@@ -15,6 +15,9 @@ PATH="${PATH}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 EDIT_CONFIGURATION_INTERACTIVE="undefined"
 ECI=${EDIT_CONFIGURATION_INTERACTIVE}
 
+IPv4_PREFERRED="y"
+#IPv4_PREFERRED="n"
+
 # Change INSTALL_RESSOURCES_PATH to your needs, but changes will appear
 # in different locations. Default is having bootstrap/ in /opt/ as shown
 # here.
@@ -128,12 +131,14 @@ echo 'APT::Install-Recommends "0";'                                     >> /etc/
 echo 'APT::Install-Suggests "0";'                                       >> /etc/apt/apt.conf
 echo 'Aptitude::Recommends-Important "false";'                          >> /etc/apt/apt.conf
 echo '//Acquire::http::Proxy "http://aptcache:3142/apt-cacher/";'       >> /etc/apt/apt.conf
-echo 'Acquire::ForceIPv4 "true";'					>> /etc/apt/apt.conf.d/99force-ipv4
-# getaddressinfo
-LOCAL_FILE="/etc/gai.conf"
-LF=${LOCAL_FILE}
-j=${LF} ; mv ${j} ${j}.orig ; cp -a ${j}.orig ${j}
-cp -a "${IRP}${LF}" ${LF}
+if [ "${IPv4_PREFERRED}" = "y" ] ; then
+	echo 'Acquire::ForceIPv4 "true";'				>> /etc/apt/apt.conf.d/99force-ipv4
+	# getaddressinfo
+	LOCAL_FILE="/etc/gai.conf"
+	LF=${LOCAL_FILE}
+	j=${LF} ; mv ${j} ${j}.orig ; cp -a ${j}.orig ${j}
+	cp -a "${IRP}${LF}" ${LF}
+fi
 }
 
 f02_use_aptitude() {
