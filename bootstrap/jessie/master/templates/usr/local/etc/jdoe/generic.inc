@@ -2,6 +2,7 @@
 
 # created:	2015-10-06 18:39
 # modified:	2016-03-02
+# modified:	2016-03-23 14:51	: aptitude + some foo
 
 # No MAC prefix with Xen
 
@@ -24,19 +25,31 @@ MPC=${MAC_PREFIX_CUSTOMIZED}
 
 LANG=C
 
+# ---->
+# This is redundant if generic.inc is invoked correctly.
+CUSTOMIZATION_PATH_PREFIX="/usr/local"
+CUSTOMIZATION_PATH="${CUSTOMIZATION_PATH_PREFIX}/etc/customization"
+CUSTOMIZATION_FILE_INC="${CUSTOMIZATION_PATH}/customization.inc"
+WORK_FILE=${CUSTOMIZATION_FILE_INC}
+
+. ${WORK_FILE}
+# <----
+
 SCI="/usr/local/etc/${CUSTOMIZATION}/shellcolors.inc"
 if [ -e ${SCI} ] ; then
-	#. /usr/local/etc/${CUSTOMIZATION}/shellcolors.inc
 	. ${SCI}
 fi
 
 PATH="${PATH}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 WHICH=`which which`
 
+APTITUDE=`${WHICH} aptitude`
 BASENAME=`${WHICH} basename`
 BC=`${WHICH} bc`
 BRCTL=`${WHICH} brctl`
 CAT=`${WHICH} cat`
+CHMOD=`${WHICH} chmod`
+CHOWN=`${WHICH} chown`
 CP=`${WHICH} cp`
 CRYPTSETUP=`${WHICH} cryptsetup`
 CUT=`${WHICH} cut`
