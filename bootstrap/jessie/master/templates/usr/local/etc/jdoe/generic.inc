@@ -27,12 +27,18 @@ LANG=C
 
 # ---->
 # This is redundant if generic.inc is invoked correctly.
+#
+# And this is a bug during dgl bootstrap because /usr/local/etc/customization does not exist yet.
+# This was a bad idea.
+#
 CUSTOMIZATION_PATH_PREFIX="/usr/local"
 CUSTOMIZATION_PATH="${CUSTOMIZATION_PATH_PREFIX}/etc/customization"
 CUSTOMIZATION_FILE_INC="${CUSTOMIZATION_PATH}/customization.inc"
 WORK_FILE=${CUSTOMIZATION_FILE_INC}
 
-. ${WORK_FILE}
+# Because it was a bad idea we do not source /usr/local/etc/customization/customization.inc
+# If we can find generic.inc we already know the customization.
+#. ${WORK_FILE}
 # <----
 
 SCI="/usr/local/etc/${CUSTOMIZATION}/shellcolors.inc"
