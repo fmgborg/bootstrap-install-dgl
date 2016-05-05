@@ -500,7 +500,8 @@ f09_activate_root_password() {
 #mv /etc/shadow /etc/shadow.orig
 #cp -a /etc/shadow.orig /etc/shadow
 #passwd
-echo passwd : root password not activated
+#echo passwd : root password not activated
+${ECHO} -e "${fgyellow}passwd : root password not activated${normal}"
 # sshd default Debian Jessie: no root password login
 }
 
