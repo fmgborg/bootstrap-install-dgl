@@ -336,6 +336,9 @@ mf00_install
 #
 ${INSTALL} busybox
 ${INSTALL} initramfs-tools
+#
+PACKAGE="keyboard-configuration"
+mf02_preconfigure
 ${INSTALL} kbd
 #
 PACKAGE="console-data"
