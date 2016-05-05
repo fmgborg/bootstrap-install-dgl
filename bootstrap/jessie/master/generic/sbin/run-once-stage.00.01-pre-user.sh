@@ -30,9 +30,19 @@ IRP=${INSTALL_RESSOURCES_PATH}
 #CUSTOMIZATION_FILE="${IRP}/customized/usr/local/etc/customization/customization.txt"
 CUSTOMIZATION_FILE="${IRP}/usr/local/etc/customization/customization.txt"
 
+DEBCONF_PRESEED_PATH="${IRP}/usr/local/etc/debconf"
+DPP="${DEBCONF_PRESEED_PATH}"
+DEBCONF_PRESEED_FILE="none"
+DPFILE="${DEBCONF_PRESEED_FILE}"
+DPFLAG="n"
+
 # installation interactive or not
-#INSTALL="aptitude install"
-INSTALL="aptitude -y install"
+# this is redundant, because it is set by ECI value in c01_check_edit
+if [ "${ECI}" = "y" ] ; then
+	INSTALL="aptitude install"
+else
+	INSTALL="aptitude -y install"
+fi
 
 # WARNING: do not edit beyond this line unless you really know what you are doing
 
@@ -114,6 +124,25 @@ fi
 }
 
 
+mf00_install() {
+# this meta function needs the name of the package, a reconfigure flag and the name of the debconf preseed file
+# DRFLAG : dpkg-reconfigure flag -- NIY
+# DPFILE : debconf preseed file
+# DPFLAG : debconf preseed flag
+if [ "${ECI}" = "y" ] ; then
+	${INSTALL} ${PACKAGE}
+	#if [ "${DRFLAG}" = "y" ] ; then
+	#	${DPKG_RECONFIGURE} ${PACKAGE}
+	#fi
+else
+	if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
+		${DEBCONF_SET_SELECTIONS} ${DPF}
+	fi
+	${INSTALL} ${PACKAGE}
+fi
+}
+
+
 f00_safe_orig_config_file_apt_sources() {
 mv /etc/apt/sources.list /etc/apt/sources.list.orig
 cp -a /etc/apt/sources.list.orig /etc/apt/sources.list
@@ -148,7 +177,17 @@ aptitude safe-upgrade
 }
 
 f03_prepare_environment() {
-${INSTALL} locales
+#
+#${INSTALL} locales
+PACKAGE="locales"
+OLD_DPFLAG=${DPFLAG}
+OLD_DPFILE=${DPFILE}
+DPFLAG="y"
+DPFILE="${DPP}/debconf-seed--locales.txt"
+mf00_install
+DPFLAG=${OLD_DPFLAG}
+DPFILE=${OLD_DPFILE}
+#
 dpkg-reconfigure locales
 dpkg-reconfigure debconf
 dpkg-reconfigure tzdata
