@@ -11,9 +11,10 @@ PATH="${PATH}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # Change this flag to edit some configuration files interactively or not.
 # safety lock
-#EDIT_CONFIGURATION_INTERACTIVE="n"
+# temporarily removed 2016-05-06
+EDIT_CONFIGURATION_INTERACTIVE="n"
 #EDIT_CONFIGURATION_INTERACTIVE="y"
-EDIT_CONFIGURATION_INTERACTIVE="undefined"
+#EDIT_CONFIGURATION_INTERACTIVE="undefined"
 ECI=${EDIT_CONFIGURATION_INTERACTIVE}
 
 IPv4_PREFERRED="y"
@@ -639,6 +640,9 @@ echo --------------------------------------------------------------------------
 ${INSTALL} sshfs
 echo --------------------------------------------------------------------------
 #
+PACKAGE="debconf"
+debconf-set-selections /opt/bootstrap/jessie/system/customized/usr/local/etc/debconf/debconf.seed--debconf.2.txt
+#
 # todo
 PACKAGE="encfs"
 #${INSTALL} encfs
@@ -654,7 +658,10 @@ ${INSTALL} ecryptfs-utils # keyutils{a} libecryptfs0{a} libnss3-1d libtspi1{a}
 #
 # fmg todo 2015-02-25
 # dbus hicolor-icon-theme libgtk2.0-bin
-echo --------------------------------------------------------------------------
+#
+PACKAGE="debconf"
+debconf-set-selections /opt/bootstrap/jessie/system/customized/usr/local/etc/debconf/debconf.seed--debconf.txt
+#
 }
 
 f15_who_uses_ressources() {
@@ -753,9 +760,5 @@ echo
 }
 
 stage_00_01_pre_user
-
-#debconf-get-selections | grep console-data | sort | grep [a-z]$
-#debconf-get-selections | grep console-setup | sort
-
 
 # EOF
