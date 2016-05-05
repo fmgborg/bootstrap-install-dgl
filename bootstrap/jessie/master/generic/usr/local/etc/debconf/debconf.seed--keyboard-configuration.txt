@@ -1,7 +1,7 @@
 keyboard-configuration	keyboard-configuration/model	select	Generic 105-key (Intl) PC
-keyboard-configuration	keyboard-configuration/layout		select	German
-keyboard-configuration	keyboard-configuration/variant		select	German - German (eliminate dead keys)
+keyboard-configuration	keyboard-configuration/layout	select	German
+keyboard-configuration	keyboard-configuration/variant	select	German - German (eliminate dead keys)
 keyboard-configuration	keyboard-configuration/variantcode	string	nodeadkeys
-keyboard-configuration	keyboard-configuration/altgr		select	The default for the keyboard layout
-keyboard-configuration	keyboard-configuration/compose		select	Left Logo key
+keyboard-configuration	keyboard-configuration/altgr	select	The default for the keyboard layout
+keyboard-configuration	keyboard-configuration/compose	select	Left Logo key
 keyboard-configuration	keyboard-configuration/optionscode	string	compose:lwin
