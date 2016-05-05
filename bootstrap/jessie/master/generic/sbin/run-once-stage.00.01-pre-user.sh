@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # multipurpose installation script
-# author:		Frank Guthausen
-# date:			2008-2015
-# this structure:	2015-10-05
-# last modification:	2015-10-09
+# author:			Frank Guthausen
+# date:				2008-2015
+# this structure:		2015-10-05
+# install + reconfiguration:	2016-05-05
+# last modification:		2016-05-05
 
 PATH="${PATH}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
@@ -170,6 +171,19 @@ fi
 DPFILE=${OLD_DPFILE}
 }
 
+mf02_preconfigure() {
+OLD_DPFLAG=${DPFLAG}
+OLD_DPFILE=${DPFILE}
+# we flag by existence of ${DPFILE}, thus DPFLAG ist always "y"
+DPFLAG="y"
+DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
+if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
+	${DEBCONF_SET_SELECTIONS} ${DPFILE}
+fi
+DPFLAG=${OLD_DPFLAG}
+DPFILE=${OLD_DPFILE}
+}
+
 
 f00_safe_orig_config_file_apt_sources() {
 mv /etc/apt/sources.list /etc/apt/sources.list.orig
@@ -249,7 +263,7 @@ PACKAGE="debconf"
 mf01_reconfigure
 #
 #dpkg-reconfigure tzdata
-PACKAGE="tzdada"
+PACKAGE="tzdata"
 #OLD_DPFILE=${DPFILE}
 #DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
 #${DEBCONF_SET_SELECTIONS} ${DPFILE}
@@ -323,7 +337,11 @@ mf00_install
 ${INSTALL} busybox
 ${INSTALL} initramfs-tools
 ${INSTALL} kbd
-${INSTALL} console-data
+#
+PACKAGE="console-data"
+#${INSTALL} console-data
+mf00_install
+#
 ${INSTALL} console-common
 #
 PACKAGE="console-setup"
@@ -407,7 +425,11 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 
 f08_install_ssh() {
 ${INSTALL} openssl
-${INSTALL} ca-certificates
+#
+PACKAGE="ca-certificates"
+#${INSTALL} ca-certificates
+mf00_install
+#
 ${INSTALL} ssl-cert
 # no stunnel4 now, maybe later
 #aptitude -y -s install stunnel4
@@ -593,8 +615,16 @@ ${INSTALL} dnsutils
 ${INSTALL} geoip-database
 echo --------------------------------------------------------------------------
 ${INSTALL} sshfs
-${INSTALL} encfs
+#
+# todo
+PACKAGE="encfs"
+#${INSTALL} encfs
+mf00_install
+#
+PACKAGE="libpam-runtime"
+mf02_preconfigure
 ${INSTALL} ecryptfs-utils # keyutils{a} libecryptfs0{a} libnss3-1d libtspi1{a}
+#
 # fmg todo 2015-02-25
 # dbus hicolor-icon-theme libgtk2.0-bin
 }
