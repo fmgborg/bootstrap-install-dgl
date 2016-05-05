@@ -1,0 +1,49 @@
+#
+
+
+locales	locales/default_environment_locale	select		C.UTF-8
+locales	locales/locales_to_be_generated		multiselect	de_DE ISO-8859-1, de_DE.UTF-8 UTF-8, de_DE@euro ISO-8859-15, en_US ISO-8859-1, en_US.ISO-8859-15 ISO-8859-15, en_US.UTF-8 UTF-8
+
+
+debconf	debconf/frontend	select	Dialog
+debconf	debconf/priority	select	medium
+
+
+#tzdata	tzdata/Zones/Etc	select	UTC
+tzdata	tzdata/Areas		select	Europe
+tzdata	tzdata/Zones/Europe     select	Berlin
+
+
+console-data	console-data/keymap/policy			select	Select keymap from arch list
+console-data	console-data/keymap/family			select	qwertz
+console-data	console-data/keymap/qwertz/layout		select	German
+console-data	console-data/keymap/qwertz/german/variant	select	Standard
+#console-data	console-data/keymap/qwertz/german/standard/keymap	select	Programmer
+
+
+keyboard-configuration	keyboard-configuration/model	select	Generic 105-key (Intl) PC
+# ... Other
+keyboard-configuration	keyboard-configuration/layout		select	German
+keyboard-configuration	keyboard-configuration/variant		select	German - German (eliminate dead keys)
+keyboard-configuration	keyboard-configuration/variantcode	string	nodeadkeys
+keyboard-configuration	keyboard-configuration/altgr		select	The default for the keyboard layout
+keyboard-configuration	keyboard-configuration/compose		select	Left Logo key
+keyboard-configuration	keyboard-configuration/optionscode	string	compose:lwin
+
+
+console-setup	console-setup/fontface47	select	VGA
+console-setup	console-setup/fontsize		string	8x16
+console-setup	console-setup/fontsize-text47	select	8x16
+console-setup	console-setup/fontsize-fb47	select	8x16
+console-setup	console-setup/charmap47		select	UTF-8
+console-setup	console-setup/codeset47		select	# Latin1 and Latin5 - western Europe and Turkic languages
+console-setup	console-setup/codesetcode	string	Lat15
+
+
+ca-certificates	ca-certificates/trust_new_crts	select	ask
+
+
+libpam-runtime	libpam-runtime/profiles	multiselect	unix, ecryptfs-utils
+
+
+# EOF
