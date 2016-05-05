@@ -82,6 +82,7 @@ ${CP} -apr ${INPUT_PATH}/* ${OUTPUT_PATH}/
 # block 03 : [8] debconf preseed config
 INPUT_PATH="${BASE_PATH}/master/generic/usr/local/etc/debconf/"
 OUTPUT_PATH="${BASE_PATH}/system/customized/usr/local/etc/debconf/"
+${MKDIR} -p ${OUTPUT_PATH}
 ${CP} -apr ${INPUT_PATH}/* ${OUTPUT_PATH}/
 
 # block 04 : [3] issue issue.net motd
