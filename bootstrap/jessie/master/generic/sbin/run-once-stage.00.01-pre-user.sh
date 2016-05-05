@@ -125,21 +125,49 @@ fi
 
 
 mf00_install() {
-# this meta function needs the name of the package, a reconfigure flag and the name of the debconf preseed file
+# old: this master function needs the name of the package, a reconfigure flag and the name of the debconf preseed file
+# new: this master function needs the name of the package
+#
 # DRFLAG : dpkg-reconfigure flag -- NIY
 # DPFILE : debconf preseed file
 # DPFLAG : debconf preseed flag
-if [ "${ECI}" = "y" ] ; then
-	${INSTALL} ${PACKAGE}
-	#if [ "${DRFLAG}" = "y" ] ; then
-	#	${DPKG_RECONFIGURE} ${PACKAGE}
-	#fi
-else
-	if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
-		${DEBCONF_SET_SELECTIONS} ${DPFILE}
-	fi
-	${INSTALL} ${PACKAGE}
+#
+OLD_DPFLAG=${DPFLAG}
+OLD_DPFILE=${DPFILE}
+# we flag by existence of ${DPFILE}, thus DPFLAG ist always "y"
+DPFLAG="y"
+DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
+if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
+	${DEBCONF_SET_SELECTIONS} ${DPFILE}
 fi
+# always install, no ifclause here
+#if [ "${ECI}" = "y" ] ; then
+#	${INSTALL} ${PACKAGE}
+#	#if [ "${DRFLAG}" = "y" ] ; then
+#	#	${DPKG_RECONFIGURE} ${PACKAGE}
+#	#fi
+#else
+#	# DPFLAG is never "y" but always "n" for now
+#	if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
+#		${DEBCONF_SET_SELECTIONS} ${DPFILE}
+#	fi
+#	${INSTALL} ${PACKAGE}
+#fi
+${INSTALL} ${PACKAGE}
+DPFLAG=${OLD_DPFLAG}
+DPFILE=${OLD_DPFILE}
+}
+
+mf01_reconfigure() {
+OLD_DPFILE=${DPFILE}
+DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
+${DEBCONF_SET_SELECTIONS} ${DPFILE}
+if [ "${ECI}" = "y" ] ; then
+	dpkg-reconfigure ${PACKAGE}
+else
+	dpkg-reconfigure -f noninteractive ${PACKAGE}
+fi
+DPFILE=${OLD_DPFILE}
 }
 
 
@@ -180,18 +208,63 @@ f03_prepare_environment() {
 #
 #${INSTALL} locales
 PACKAGE="locales"
-OLD_DPFLAG=${DPFLAG}
-OLD_DPFILE=${DPFILE}
-DPFLAG="y"
-DPFILE="${DPP}/debconf.seed--locales.txt"
+# flag and file are handled in (master)function mf00_install
+#OLD_DPFLAG=${DPFLAG}
+#OLD_DPFILE=${DPFILE}
+# we do not use DPFLAG and set the seed explicitely for now
+#DPFLAG="y"
+#DPFILE="${DPP}/debconf.seed--locales.txt"
+#DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
+#${DEBCONF_SET_SELECTIONS} ${DPFILE}
+# we call the masterfunction
 mf00_install
-DPFLAG=${OLD_DPFLAG}
-DPFILE=${OLD_DPFILE}
+#${INSTALL} ${PACKAGE}
+#DPFLAG=${OLD_DPFLAG}
+#DPFILE=${OLD_DPFILE}
 #
-dpkg-reconfigure locales
-dpkg-reconfigure debconf
-dpkg-reconfigure tzdata
-${INSTALL} rsync
+#dpkg-reconfigure locales
+PACKAGE="locales"
+#OLD_DPFILE=${DPFILE}
+#DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
+#${DEBCONF_SET_SELECTIONS} ${DPFILE}
+#if [ "${ECI}" = "y" ] ; then
+#	dpkg-reconfigure ${PACKAGE}
+#else
+#	dpkg-reconfigure -f noninteractive ${PACKAGE}
+#fi
+#DPFILE=${OLD_DPFILE}
+mf01_reconfigure
+#
+#dpkg-reconfigure debconf
+PACKAGE="debconf"
+#OLD_DPFILE=${DPFILE}
+#DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
+#${DEBCONF_SET_SELECTIONS} ${DPFILE}
+#if [ "${ECI}" = "y" ] ; then
+#	dpkg-reconfigure ${PACKAGE}
+#else
+#	dpkg-reconfigure -f noninteractive ${PACKAGE}
+#fi
+#DPFILE=${OLD_DPFILE}
+mf01_reconfigure
+#
+#dpkg-reconfigure tzdata
+PACKAGE="tzdada"
+#OLD_DPFILE=${DPFILE}
+#DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
+#${DEBCONF_SET_SELECTIONS} ${DPFILE}
+#if [ "${ECI}" = "y" ] ; then
+#	dpkg-reconfigure ${PACKAGE}
+#else
+#	dpkg-reconfigure -f noninteractive ${PACKAGE}
+#fi
+#DPFILE=${OLD_DPFILE}
+mf01_reconfigure
+#
+#${INSTALL} rsync
+PACKAGE="rsync"
+mf00_install
+#
 # prevent daemons to start inside of chroot
 ## no trouble with 'service stop $foo' before leaving and umounting
 LOCAL_FILE="/usr/sbin/policy-rc.d"
@@ -201,11 +274,14 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 ## http://without-systemd.org/wiki/index.php/How_to_remove_systemd_from_a_Debian_jessie/sid_installation
 ## transitional package sysvinit contains fallback SysV init binary
 ## usage as kernel command line parameter: init=/lib/sysvinit/init
+# this is a special case, not with mf00_install
 ${INSTALL} sysvinit-core systemd-sysv-
 }
 
 f04_install_editor() {
-${INSTALL} vim
+#${INSTALL} vim
+PACKAGE="vim"
+mf00_install
 if [ "${ECI}" = "y" ] ; then
 	#update-alternatives --config editor
 	${UPDATE_ALTERNATIVES} --config editor
@@ -231,17 +307,31 @@ LOCAL_FILE="/etc/apt/sources.list"
 #fi
 c02_configfile
 aptitude update
+#
+# security upgrades now
+${ECHO} -e "${fgred}security upgrades now${normal}"
+aptitude safe-upgrade
+${ECHO} -e "${fggreen}security upgrades done${normal}"
 }
 
 f06_install_tools_l01_elementary() {
-${INSTALL} cryptsetup
+#
+PACKAGE="cryptsetup"
+#${INSTALL} cryptsetup
+mf00_install
+#
 ${INSTALL} busybox
 ${INSTALL} initramfs-tools
 ${INSTALL} kbd
 ${INSTALL} console-data
 ${INSTALL} console-common
-${INSTALL} console-setup
-dpkg-reconfigure console-setup
+#
+PACKAGE="console-setup"
+#${INSTALL} console-setup
+mf00_install
+#dpkg-reconfigure console-setup
+mf01_reconfigure
+#
 ${INSTALL} lvm2
 ${INSTALL} bridge-utils
 }
