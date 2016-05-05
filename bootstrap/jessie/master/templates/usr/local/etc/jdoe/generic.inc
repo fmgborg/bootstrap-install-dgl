@@ -60,6 +60,7 @@ CP=`${WHICH} cp`
 CRYPTSETUP=`${WHICH} cryptsetup`
 CUT=`${WHICH} cut`
 DATE=`${WHICH} date`
+DEBCONF_SET_SELECTIONS=`${WHICH} debconf-set-selections`
 ECHO=`${WHICH} echo`
 FIND=`${WHICH} find`
 GIT=`${WHICH} git`
