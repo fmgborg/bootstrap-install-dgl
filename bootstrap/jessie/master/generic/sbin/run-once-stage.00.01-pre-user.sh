@@ -136,7 +136,7 @@ if [ "${ECI}" = "y" ] ; then
 	#fi
 else
 	if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
-		${DEBCONF_SET_SELECTIONS} ${DPF}
+		${DEBCONF_SET_SELECTIONS} ${DPFILE}
 	fi
 	${INSTALL} ${PACKAGE}
 fi
