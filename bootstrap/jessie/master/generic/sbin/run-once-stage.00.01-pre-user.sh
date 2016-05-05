@@ -651,8 +651,8 @@ mf00_install
 echo --------------------------------------------------------------------------
 #
 PACKAGE="libpam-runtime"
-#mf02_preconfigure
-mf00_install
+mf02_preconfigure
+#mf00_install
 echo --------------------------------------------------------------------------
 ${INSTALL} ecryptfs-utils # keyutils{a} libecryptfs0{a} libnss3-1d libtspi1{a}
 #
