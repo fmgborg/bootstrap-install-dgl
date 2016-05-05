@@ -183,7 +183,7 @@ PACKAGE="locales"
 OLD_DPFLAG=${DPFLAG}
 OLD_DPFILE=${DPFILE}
 DPFLAG="y"
-DPFILE="${DPP}/debconf-seed--locales.txt"
+DPFILE="${DPP}/debconf.seed--locales.txt"
 mf00_install
 DPFLAG=${OLD_DPFLAG}
 DPFILE=${OLD_DPFILE}
