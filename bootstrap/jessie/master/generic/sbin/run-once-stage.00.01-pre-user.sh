@@ -139,7 +139,10 @@ OLD_DPFILE=${DPFILE}
 DPFLAG="y"
 DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
 if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
+	${ECHO} -e "${fggreen}${DEBCONF_SET_SELECTIONS} ${DPFILE}${fgnormal}"
 	${DEBCONF_SET_SELECTIONS} ${DPFILE}
+else
+	${ECHO} -e "${red}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
 fi
 # always install, no ifclause here
 #if [ "${ECI}" = "y" ] ; then
@@ -178,7 +181,10 @@ OLD_DPFILE=${DPFILE}
 DPFLAG="y"
 DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
 if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
+	${ECHO} -e "${fggreen}${DEBCONF_SET_SELECTIONS} ${DPFILE}${fgnormal}"
 	${DEBCONF_SET_SELECTIONS} ${DPFILE}
+else
+	${ECHO} -e "${red}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
 fi
 DPFLAG=${OLD_DPFLAG}
 DPFILE=${OLD_DPFILE}
@@ -618,18 +624,24 @@ ${INSTALL} dnsutils
 ${INSTALL} geoip-database
 echo --------------------------------------------------------------------------
 ${INSTALL} sshfs
+echo --------------------------------------------------------------------------
 #
 # todo
 PACKAGE="encfs"
 #${INSTALL} encfs
 mf00_install
 #
+echo --------------------------------------------------------------------------
+#
 PACKAGE="libpam-runtime"
-mf02_preconfigure
+#mf02_preconfigure
+mf00_install
+echo --------------------------------------------------------------------------
 ${INSTALL} ecryptfs-utils # keyutils{a} libecryptfs0{a} libnss3-1d libtspi1{a}
 #
 # fmg todo 2015-02-25
 # dbus hicolor-icon-theme libgtk2.0-bin
+echo --------------------------------------------------------------------------
 }
 
 f15_who_uses_ressources() {
