@@ -139,7 +139,7 @@ OLD_DPFILE=${DPFILE}
 DPFLAG="y"
 DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
 if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
-	${ECHO} -e "${fggreen}${DEBCONF_SET_SELECTIONS} ${DPFILE}${fgnormal}"
+	${ECHO} -e "${fggreen}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
 	${DEBCONF_SET_SELECTIONS} ${DPFILE}
 else
 	${ECHO} -e "${red}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
@@ -181,7 +181,7 @@ OLD_DPFILE=${DPFILE}
 DPFLAG="y"
 DPFILE="${DPP}/debconf.seed--${PACKAGE}.txt"
 if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
-	${ECHO} -e "${fggreen}${DEBCONF_SET_SELECTIONS} ${DPFILE}${fgnormal}"
+	${ECHO} -e "${fggreen}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
 	${DEBCONF_SET_SELECTIONS} ${DPFILE}
 else
 	${ECHO} -e "${red}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
