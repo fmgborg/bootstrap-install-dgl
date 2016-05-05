@@ -142,7 +142,7 @@ if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
 	${ECHO} -e "${fggreen}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
 	${DEBCONF_SET_SELECTIONS} ${DPFILE}
 else
-	${ECHO} -e "${red}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
+	${ECHO} -e "${fgred}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
 fi
 # always install, no ifclause here
 #if [ "${ECI}" = "y" ] ; then
@@ -184,7 +184,7 @@ if [ "${DPFLAG}" = "y" ] && [ -e "${DPFILE}" ] ; then
 	${ECHO} -e "${fggreen}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
 	${DEBCONF_SET_SELECTIONS} ${DPFILE}
 else
-	${ECHO} -e "${red}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
+	${ECHO} -e "${fgred}${DEBCONF_SET_SELECTIONS} ${DPFILE}${normal}"
 fi
 DPFLAG=${OLD_DPFLAG}
 DPFILE=${OLD_DPFILE}
@@ -345,13 +345,25 @@ ${INSTALL} initramfs-tools
 #
 PACKAGE="keyboard-configuration"
 mf02_preconfigure
+PACKAGE="console-data"
+mf02_preconfigure
+PACKAGE="console-common"
+mf02_preconfigure
+PACKAGE="console-setup"
+mf02_preconfigure
+#
+#
+PACKAGE="keyboard-configuration"
+mf02_preconfigure
 ${INSTALL} kbd
 #
 PACKAGE="console-data"
 #${INSTALL} console-data
 mf00_install
 #
-${INSTALL} console-common
+PACKAGE="console-common"
+#${INSTALL} console-common
+mf00_install
 #
 PACKAGE="console-setup"
 #${INSTALL} console-setup
@@ -740,5 +752,9 @@ echo
 }
 
 stage_00_01_pre_user
+
+#debconf-get-selections | grep console-data | sort | grep [a-z]$
+#debconf-get-selections | grep console-setup | sort
+
 
 # EOF
