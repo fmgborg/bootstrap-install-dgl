@@ -1,4 +1,4 @@
-console-data	console-data/keymap/policy	select	Select keymap from arch list
 console-data	console-data/keymap/family	select	qwertz
-console-data	console-data/keymap/qwertz/layout	select	German
+console-data	console-data/keymap/full	select	de-latin1-nodeadkeys
+console-data	console-data/keymap/policy	select	Select keymap from full list
 console-data	console-data/keymap/qwertz/german/variant	select	Standard
