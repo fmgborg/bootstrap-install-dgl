@@ -1,0 +1,3 @@
+console-common	console-data/keymap/family	select	qwertz
+console-common	console-data/keymap/full	select	de-latin1-nodeadkeys
+console-common	console-data/keymap/policy	select	Select keymap from full list
