@@ -167,7 +167,13 @@ ${INSTALL} sysvinit-core systemd-sysv-
 
 f04_install_editor() {
 ${INSTALL} vim
-update-alternatives --config editor
+if [ "${ECI}" = "y" ] ; then
+	#update-alternatives --config editor
+	${UPDATE_ALTERNATIVES} --config editor
+else
+	#update-alternatives --set editor /usr/bin/vim.basic
+	${UPDATE_ALTERNATIVES} --set editor /usr/bin/vim.basic
+fi
 LOCAL_FILE="/root/.selected_editor"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 # vim configuration before we modify sources.list

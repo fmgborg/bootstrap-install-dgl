@@ -80,6 +80,7 @@ SWAPOFF=`${WHICH} swapoff`
 SWAPON=`${WHICH} swapon`
 RM=`${WHICH} rm`
 UMOUNT=`${WHICH} umount`
+UPDATE_ALTERNATIVES=`${WHICH} update-alternatives`
 VGCHANGE=`${WHICH} vgchange`
 VIM=`${WHICH} vim`
 WC=`${WHICH} wc`
