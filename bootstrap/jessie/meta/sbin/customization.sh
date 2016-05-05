@@ -79,7 +79,12 @@ ${MKDIR} -p ${OUTPUT_PATH}
 #${RSYNC} -au ${INPUT_PATH}/ ${OUTPUT_PATH}/
 ${CP} -apr ${INPUT_PATH}/* ${OUTPUT_PATH}/
 
-# block 03 : [3] issue issue.net motd
+# block 03 : [8] debconf preseed config
+INPUT_PATH="${BASE_PATH}/master/generic/usr/local/etc/debconf/"
+OUTPUT_PATH="${BASE_PATH}/system/customized/usr/local/etc/debconf/"
+${CP} -apr ${INPUT_PATH}/* ${OUTPUT_PATH}/
+
+# block 04 : [3] issue issue.net motd
 INPUT_PATH="${BASE_PATH}/master/templates/etc"
 OUTPUT_PATH="${BASE_PATH}/system/customized/etc"
 ${MKDIR} -p ${OUTPUT_PATH}
@@ -99,16 +104,16 @@ INPUT_FILE="${INPUT_PATH}/${FILENAME}"
 OUTPUT_FILE="${OUTPUT_PATH}/${FILENAME}"
 ${SED} -e s/T_CUSTOMIZATION_NAME/${CUSTOMIZATION_NAME}/g < ${INPUT_FILE} > ${OUTPUT_FILE}
 
-# block 04 : [42] all generic files
+# block 05 : [42] all generic files
 INPUT_PATH="${BASE_PATH}/master/generic"
 OUTPUT_PATH="${BASE_PATH}/system/customized"
 ${CP} -apr ${INPUT_PATH}/* ${OUTPUT_PATH}/
 
-# block 05 :  [6] all precustomized files
+# block 06 :  [6] all precustomized files
 INPUT_PATH="${BASE_PATH}/master/precustomized"
 ${CP} -apr ${INPUT_PATH}/* ${OUTPUT_PATH}/
 
-# block 06 : [1] Debian Etch Debian.jpg
+# block 07 : [1] Debian Etch Debian.jpg
 INPUT_PATH="${WORK_PATH_TO_BOOTSTRAP}/bootstrap/all/opt"
 ${CP} -apr ${INPUT_PATH} ${OUTPUT_PATH}
 
