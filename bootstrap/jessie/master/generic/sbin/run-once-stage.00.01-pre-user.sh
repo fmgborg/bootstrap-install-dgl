@@ -677,6 +677,7 @@ cp -a /etc/sudoers.orig /etc/sudoers
 }
 
 f17_skeleton() {
+echo skeleton
 mkdir /etc/skel/.ssh
 touch /etc/skel/.ssh/authorized_keys
 #
