@@ -371,6 +371,9 @@ PACKAGE="console-common"
 #${INSTALL} console-common
 mf00_install
 #
+# predefine config file for comparision
+LOCAL_FILE="/etc/default/console-setup"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 PACKAGE="console-setup"
 #${INSTALL} console-setup
 mf00_install
