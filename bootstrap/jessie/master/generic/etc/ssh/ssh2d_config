@@ -2,12 +2,7 @@
 # See the sshd_config(5) manpage for details
 
 # What ports, IPs and protocols we listen for
-# fmg 20140619-0335 port changed
-#Port 22
 Port 222
-# fmg 20120405 0154 no pidfile here, but in /etc/default/ssh2
-# fmg 20151006 2122 no pidfile here, but in /etc/init.d/ssh2
-#PidFile /var/run/ssh2.pid
 # Use these options to restrict which interfaces/protocols sshd will bind to
 #ListenAddress ::
 #ListenAddress 0.0.0.0
@@ -15,14 +10,14 @@ Protocol 2
 # HostKeys for protocol version 2
 HostKey /etc/ssh/ssh_host_rsa_key
 HostKey /etc/ssh/ssh_host_dsa_key
-# fmg 20140619 0211 with ECDSA Key
 HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
 #Privilege Separation is turned on for security
 UsePrivilegeSeparation yes
 
 # Lifetime and size of ephemeral version 1 server key
 KeyRegenerationInterval 3600
-ServerKeyBits 768
+ServerKeyBits 1024
 
 # Logging
 SyslogFacility AUTH
@@ -30,7 +25,7 @@ LogLevel INFO
 
 # Authentication:
 LoginGraceTime 120
-PermitRootLogin yes
+PermitRootLogin without-password
 StrictModes yes
 
 RSAAuthentication yes
@@ -55,8 +50,6 @@ ChallengeResponseAuthentication no
 
 # Change to no to disable tunnelled clear text passwords
 #PasswordAuthentication yes
-# fmg 20120405 0155 only key login
-PasswordAuthentication no
 
 # Kerberos options
 #KerberosAuthentication no
