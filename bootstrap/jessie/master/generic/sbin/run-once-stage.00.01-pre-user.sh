@@ -476,6 +476,10 @@ ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key	>> ${FINGERPRINTLOG}
 ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key	>> ${FINGERPRINTLOG}
 ssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key	>> ${FINGERPRINTLOG}
 #
+mv /etc/ssh/sshd_config /etc/ssh/sshd_config.orig
+LOCAL_FILE="/etc/ssh/sshd_config"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+#
 LOCAL_FILE="/etc/default/ssh2"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/etc/init.d/ssh2"
