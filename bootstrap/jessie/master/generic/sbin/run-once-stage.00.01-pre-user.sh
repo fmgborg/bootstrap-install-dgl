@@ -345,8 +345,8 @@ mf00_install
 ${INSTALL} busybox
 ${INSTALL} initramfs-tools
 #
-PACKAGE="keyboard-configuration"
-mf02_preconfigure
+#PACKAGE="keyboard-configuration"
+#mf02_preconfigure
 PACKAGE="console-data"
 mf02_preconfigure
 PACKAGE="console-common"
@@ -354,10 +354,14 @@ mf02_preconfigure
 PACKAGE="console-setup"
 mf02_preconfigure
 #
+${INSTALL} kbd
 #
 PACKAGE="keyboard-configuration"
-mf02_preconfigure
-${INSTALL} kbd
+#mf02_preconfigure
+mf00_install
+mv /etc/default/keyboard /etc/default/keyboard.orig
+LOCAL_FILE="/etc/default/keyboard"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #
 PACKAGE="console-data"
 #${INSTALL} console-data
