@@ -269,6 +269,7 @@ PACKAGE="debconf"
 #DPFILE=${OLD_DPFILE}
 mf01_reconfigure
 #
+mv /etc/timezone /etc/timezone.orig
 #dpkg-reconfigure tzdata
 PACKAGE="tzdata"
 #OLD_DPFILE=${DPFILE}
