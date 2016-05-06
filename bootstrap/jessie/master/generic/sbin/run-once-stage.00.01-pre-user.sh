@@ -347,12 +347,12 @@ ${INSTALL} initramfs-tools
 #
 #PACKAGE="keyboard-configuration"
 #mf02_preconfigure
-PACKAGE="console-data"
-mf02_preconfigure
-PACKAGE="console-common"
-mf02_preconfigure
-PACKAGE="console-setup"
-mf02_preconfigure
+#PACKAGE="console-data"
+#mf02_preconfigure
+#PACKAGE="console-common"
+#mf02_preconfigure
+#PACKAGE="console-setup"
+#mf02_preconfigure
 #
 ${INSTALL} kbd
 #
@@ -375,7 +375,10 @@ PACKAGE="console-setup"
 #${INSTALL} console-setup
 mf00_install
 #dpkg-reconfigure console-setup
-mf01_reconfigure
+#mf01_reconfigure
+mv /etc/default/console-setup /etc/default/console-setup.orig
+LOCAL_FILE="/etc/default/console-setup"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #
 ${INSTALL} lvm2
 ${INSTALL} bridge-utils
