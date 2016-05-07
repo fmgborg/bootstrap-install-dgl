@@ -222,7 +222,12 @@ fi
 f02_use_aptitude() {
 apt-get -y install aptitude
 aptitude update
-aptitude safe-upgrade
+#aptitude safe-upgrade
+if [ "${ECI}" = "y" ] ; then
+	aptitude safe-upgrade
+else
+	aptitude -y safe-upgrade
+fi
 }
 
 f03_prepare_environment() {
@@ -332,7 +337,11 @@ aptitude update
 #
 # security upgrades now
 ${ECHO} -e "${fgred}security upgrades now${normal}"
-aptitude safe-upgrade
+if [ "${ECI}" = "y" ] ; then
+	aptitude safe-upgrade
+else
+	aptitude -y safe-upgrade
+fi
 ${ECHO} -e "${fggreen}security upgrades done${normal}"
 }
 
