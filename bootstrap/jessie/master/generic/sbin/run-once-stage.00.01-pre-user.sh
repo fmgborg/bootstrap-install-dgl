@@ -553,13 +553,15 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #
 if [ -e /root/.bash_history ] ; then
 	mv /root/.bash_history /root/.bash_history.orig
-	cp -a /root/.bash_history.orig /root/.bash_history
+	# we rewrite it a few lines below
+	#cp -a /root/.bash_history.orig /root/.bash_history
 fi
 #vi /root/.bash_history
 #
 # rewriting /root/.bash_history is too aggressive
-#LOCAL_FILE="/root/.bash_history"
-#LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+# despite, we do it (scripts run from outside via chroot /mnt ...)
+LOCAL_FILE="/root/.bash_history"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 ## not : c02_configfile
 #
 LOCAL_FILE="/root/.bash_history.template"
@@ -725,6 +727,68 @@ LOCAL_FILE="/etc/skel/.bashrc"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 }
 
+f18_some_tools() {
+${INSTALL} debconf-utils
+${INSTALL} colordiff
+${INSTALL} mc # mc-data{a}
+
+${INSTALL} kpartx
+${INSTALL} parted # libparted2{a}
+
+${INSTALL} pciutils # libpci3{a}
+${INSTALL} usbutils # libusb-1.0-0{a}
+${INSTALL} hdparm # # recomm: powermgmt-base
+${INSTALL} acpid # # recomm: acpi-support-base
+${INSTALL} acpi-support-base
+${INSTALL} acpi
+${INSTALL} acpitool
+#${INSTALL} traceroute # wann kam das drauf?
+#${INSTALL} ucf # schon drauf ### ecryptfs ### todo
+${INSTALL} dbus # libcap-ng0{a}
+${INSTALL} sharutils
+${INSTALL} sharutils-doc
+${INSTALL} bc
+${INSTALL} colordiff
+${INSTALL} zip # # recomm: unzip
+${INSTALL} unzip
+${INSTALL} p7zip-full
+${INSTALL} aspell-de aspell-en # aspell{a} dictionaries-common{a} emacsen-common{a} libaspell15{a}
+${INSTALL} myspell-de-de myspell-en-us
+${INSTALL} mtools
+${INSTALL} dosfstools
+${INSTALL} telnet
+${INSTALL} nmap # libblas-common{a} libblas3{a} libgfortran3{a} liblinear1{a} liblua5.2-0{a} libpcap0.8{a} libquadmath0{a} # recomm: ndiff
+${INSTALL}all ndiff # libpython-stdlib{a} libpython2.7-minimal{a} libpython2.7-stdlib{a} libxslt1.1{a} mime-support{a} python{a} python-lxml{a} python-minimal{a} python2.7{a} python2.7-minimal{a}
+${INSTALL} mime-support
+${INSTALL} python-minimal # libpython2.7-minimal{a} python2.7-minimal{a} # recomm: libpython2.7-stdlib python python2.7
+${INSTALL} python # libpython-stdlib{a} libpython2.7-stdlib{a} python2.7{a}
+${INSTALL} ndiff # libxslt1.1{a} python-lxml{a}
+${INSTALL} iftop
+${INSTALL} htop
+${INSTALL} arptables
+${INSTALL} ebtables
+${INSTALL} ethtool
+${INSTALL} hping3 # libtcl8.6{a}
+
+${INSTALL} lynx # lynx-cur{a}
+${INSTALL} links
+${INSTALL} links2 # libdirectfb-1.2-9{a}
+${INSTALL} elinks # elinks-data{a} libfsplib0{a} libperl5.20{a} libtre5{a}
+${INSTALL} w3m # libgc1c2{a}
+${INSTALL} git # git-man{a} liberror-perl{a} # recomm: patch
+${INSTALL} patch
+${INSTALL} make
+${INSTALL} cpp # cpp-4.9{a} libcloog-isl4{a} libisl10{a} libmpc3{a} libmpfr4{a}
+
+#${INSTALL} .
+#${INSTALL} .
+#${INSTALL} .
+#${INSTALL} .
+#${INSTALL} .
+#${INSTALL} .
+}
+
+
 stage_00_01_pre_user() {
 echo
 echo --------------------------------------------------------------------------
@@ -770,10 +834,10 @@ f16_install_sudo
 echo --------------------------------------------------------------------------
 f17_skeleton
 echo --------------------------------------------------------------------------
-${INSTALL} debconf-utils
+# check this if it belongs to stage.00.01-pre-user
+f18_some_tools
 echo --------------------------------------------------------------------------
 echo stage.00.01-pre-user
-echo --------------------------------------------------------------------------
 echo --------------------------------------------------------------------------
 echo 'python?'
 echo --------------------------------------------------------------------------
@@ -784,6 +848,45 @@ echo --------------------------------------------------------------------------
 echo
 }
 
+
+f_extra_01_kernel() {
+ln -s /proc/mounts /etc/mtab
+${INSTALL} linux-image-amd64 # libuuid-perl{a} linux-base{a} linux-image-3.16.0-4-amd64{a} # recomm: firmware-linux-free irqbalance
+${INSTALL} firmware-linux-free
+}
+
+f_extra_02_bootloader_grub2() {
+${INSTALL} grub2 # grub-common{a} grub-pc{a} grub-pc-bin{a} grub2-common{a} # recomm: os-prober
+}
+
+
+stage_00_02_kernel() {
+echo
+echo --------------------------------------------------------------------------
+f_extra_01_kernel
+echo --------------------------------------------------------------------------
+echo stage.00.02-kernel
+echo --------------------------------------------------------------------------
+echo
+}
+
+stage_00_03_bootloader() {
+echo
+echo --------------------------------------------------------------------------
+# this is interactive
+if [ "${ECI}" = "y" ] ; then
+	f_extra_02_bootloader_grub2
+fi
+echo --------------------------------------------------------------------------
+echo stage.00.03-bootloader
+echo --------------------------------------------------------------------------
+echo
+}
+
+# main programm
+
 stage_00_01_pre_user
+stage_00_02_kernel
+#stage_00_03_bootloader
 
 # EOF
