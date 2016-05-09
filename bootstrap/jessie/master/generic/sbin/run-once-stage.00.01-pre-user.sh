@@ -587,6 +587,7 @@ mkdir -p /root/bin
 LOCAL_FILE="/root/bin/chrootenv.sh"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 ${INSTALL} git # git-man{a} liberror-perl{a} # recomm: patch
+# git-man{a} libcurl3-gnutls{a} liberror-perl{a} libexpat1{a} libldap-2.4-2{a} librtmp1{a} libsasl2-2{a} libsasl2-modules-db{a} libssh2-1{a} perl{a} perl-modules{a}
 ${INSTALL} patch
 echo --------------------------------------------------------------------------
 # check bzip2 here, and other compressions
@@ -736,6 +737,11 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 
 f18_some_tools() {
 ${INSTALL} debconf-utils
+${INSTALL} locate
+if [ -x /usr/bin/updatedb ] ; then
+	/usr/bin/updatedb
+fi
+
 ${INSTALL} colordiff
 ${INSTALL} mc # mc-data{a}
 
