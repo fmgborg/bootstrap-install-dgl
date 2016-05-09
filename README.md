@@ -12,7 +12,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 * choose a device which will become the root device of your new system
 * note UUID for fstab
 * mount it to /mnt
-* for each separate device/partiton, e.g. as in /home /tmp /var etc.pp., mkdir /mnt/${foo} and mount
+* for each separate device/partition, e.g. as in /home /tmp /var etc.pp., mkdir /mnt/${foo} and mount
 * note UUID(s) for fstab
 * debootstrap
  debootstrap --arch amd64 jessie /mnt http://ftp.debian.org/debian
