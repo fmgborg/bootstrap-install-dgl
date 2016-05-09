@@ -16,34 +16,46 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 * note UUID(s) for fstab
 * debootstrap
 
+```
     debootstrap --arch amd64 jessie /mnt http://ftp.debian.org/debian
+```
 
 * mount further devices, e.g. for /boot
 * note UUID(s) for fstab
 * mount system devices (chrootenv on)
 
+```
     mount --bind /dev /mnt/dev
     mount --bind /dev/pts /mnt/dev/pts
     mount --bind /proc /mnt/prov
     mount --bind /sys /mnt/sys
+```
 
 * choose an identifier for customization, e.g. foobar
 
+```
     vi /mnt/opt/bootstrap/jessie/meta/etc/customizationname
+```
 
 * run the customization script
 
+```
     chroot /mnt/ /opt/bootstrap/jessie/meta/sbin/customization.sh
+```
 
 * edit configuration template files, to boot the new system at least
 
+```
     vi /mnt/opt/bootstrap/jessie/system/customized/etc/network/interfaces
     vi /mnt/opt/bootstrap/jessie/system/customized/etc/fstab
     vi /mnt/opt/bootstrap/jessie/system/customized/etc/hostname
+```
 
 * edit installation script (noninteractive or interactive)
 
+```
     vi /mnt/opt/bootstrap/jessie/system/customized/sbin/run-once-stage.00.01-pre-user.sh
+```
 
 * run the installation script
 
