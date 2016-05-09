@@ -60,6 +60,11 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
     chroot /mnt
 ```
 * you should see a coloured prompt, beginning with the word ``chroot''
+* for non German keyboard layouts there is no preconfiguration yet
+```
+    dpkg-reconfigure -plow keyboard-configuration
+    dpkg-reconfigure -plow console-setup
+```
 * install bootloader
 ```
     aptitude install grub2
@@ -74,11 +79,6 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
     umount /mnt/boot
     umount /mnt/${foo}
     umount /mnt
-```
-* for non German keyboard layouts there is no preconfiguration yet
-```
-    dpkg-reconfigure -plow keyboard-configuration
-    dpkg-reconfigure -plow console-setup
 ```
 * the new system should boot now
 
