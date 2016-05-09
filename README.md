@@ -33,7 +33,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
     mount --bind /proc /mnt/prov
     mount --bind /sys /mnt/sys
 ```
-* choose an identifier for customization, e.g. foobar
+* choose an identifier for customization, e.g. acme (ACME)
 ```
     vi /mnt/opt/bootstrap/jessie/meta/etc/customizationname
 ```
