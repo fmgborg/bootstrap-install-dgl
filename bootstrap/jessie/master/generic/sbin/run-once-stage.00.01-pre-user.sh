@@ -581,6 +581,9 @@ ${INSTALL} bash-completion
 ${INSTALL} screen
 ${INSTALL} tmux
 ${INSTALL} debootstrap
+mkdir -p /root/bin
+LOCAL_FILE="/root/bin/chrootenv.sh"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 echo --------------------------------------------------------------------------
 # check bzip2 here, and other compressions
 ${INSTALL} bzip2
