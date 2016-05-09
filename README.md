@@ -77,7 +77,8 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 ```
 * for non German keyboard layouts there is no preconfiguration yet
 ```
-    dpkg-reconfigure keyboard-configuration
+    dpkg-reconfigure -plow keyboard-configuration
+    dpkg-reconfigure -plow console-setup
 ```
 * the new system should boot now
 
