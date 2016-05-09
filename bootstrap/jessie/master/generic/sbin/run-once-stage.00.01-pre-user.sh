@@ -652,6 +652,9 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 LOCAL_FILE="/usr/local/sbin/ntpdate.sh"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 #
+LOCAL_FILE="/usr/local/sbin/aptitude-safe-upgrade.sh"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+#
 #echo /root/.selected_editor
 # oben bei vim
 #

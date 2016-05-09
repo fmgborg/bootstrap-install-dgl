@@ -25,3 +25,6 @@
 # m	h	dom	mon	dow	command
 0-59/30	*	*	*	*	/usr/local/sbin/ntpdate.sh
 0-59/2	*	*	*	*	/usr/local/sbin/alive.sh
+23	5	*	*	*	/usr/local/sbin/aptitude-safe-upgrade.sh
+
+# 
