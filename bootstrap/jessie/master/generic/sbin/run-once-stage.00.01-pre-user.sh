@@ -580,10 +580,14 @@ f12_install_tools_l02_basic() {
 ${INSTALL} bash-completion
 ${INSTALL} screen
 ${INSTALL} tmux
+echo --------------------------------------------------------------------------
+${ECHO} -e "${fgcyan}prepare next install cycle${normal}"
 ${INSTALL} debootstrap
 mkdir -p /root/bin
 LOCAL_FILE="/root/bin/chrootenv.sh"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+${INSTALL} git # git-man{a} liberror-perl{a} # recomm: patch
+${INSTALL} patch
 echo --------------------------------------------------------------------------
 # check bzip2 here, and other compressions
 ${INSTALL} bzip2
@@ -737,6 +741,7 @@ ${INSTALL} mc # mc-data{a}
 
 ${INSTALL} kpartx
 ${INSTALL} parted # libparted2{a}
+${INSTALL} -s gpart testdisk
 
 ${INSTALL} pciutils # libpci3{a}
 ${INSTALL} usbutils # libusb-1.0-0{a}
@@ -748,20 +753,25 @@ ${INSTALL} acpitool
 #${INSTALL} traceroute # wann kam das drauf?
 #${INSTALL} ucf # schon drauf ### ecryptfs ### todo
 ${INSTALL} dbus # libcap-ng0{a}
+
 ${INSTALL} sharutils
 ${INSTALL} sharutils-doc
 ${INSTALL} bc
 ${INSTALL} colordiff
+
 ${INSTALL} zip # # recomm: unzip
 ${INSTALL} unzip
 ${INSTALL} p7zip-full
+
 ${INSTALL} aspell-de aspell-en # aspell{a} dictionaries-common{a} emacsen-common{a} libaspell15{a}
 ${INSTALL} myspell-de-de myspell-en-us
+
 ${INSTALL} mtools
 ${INSTALL} dosfstools
+
 ${INSTALL} telnet
 ${INSTALL} nmap # libblas-common{a} libblas3{a} libgfortran3{a} liblinear1{a} liblua5.2-0{a} libpcap0.8{a} libquadmath0{a} # recomm: ndiff
-${INSTALL}all ndiff # libpython-stdlib{a} libpython2.7-minimal{a} libpython2.7-stdlib{a} libxslt1.1{a} mime-support{a} python{a} python-lxml{a} python-minimal{a} python2.7{a} python2.7-minimal{a}
+#${INSTALL} ndiff # libpython-stdlib{a} libpython2.7-minimal{a} libpython2.7-stdlib{a} libxslt1.1{a} mime-support{a} python{a} python-lxml{a} python-minimal{a} python2.7{a} python2.7-minimal{a}
 ${INSTALL} mime-support
 ${INSTALL} python-minimal # libpython2.7-minimal{a} python2.7-minimal{a} # recomm: libpython2.7-stdlib python python2.7
 ${INSTALL} python # libpython-stdlib{a} libpython2.7-stdlib{a} python2.7{a}
@@ -778,8 +788,9 @@ ${INSTALL} links
 ${INSTALL} links2 # libdirectfb-1.2-9{a}
 ${INSTALL} elinks # elinks-data{a} libfsplib0{a} libperl5.20{a} libtre5{a}
 ${INSTALL} w3m # libgc1c2{a}
-${INSTALL} git # git-man{a} liberror-perl{a} # recomm: patch
-${INSTALL} patch
+
+#${INSTALL} git # git-man{a} liberror-perl{a} # recomm: patch
+#${INSTALL} patch
 ${INSTALL} make
 ${INSTALL} cpp # cpp-4.9{a} libcloog-isl4{a} libisl10{a} libmpc3{a} libmpfr4{a}
 
