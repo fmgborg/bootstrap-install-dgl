@@ -26,12 +26,12 @@ iface eth0 inet dhcp
 # #	gateway 10.112.49.1
 
 # xen internal network, no nat and no gateway
-auto eth2
-iface eth2 inet static
-	address 10.192.168.11
-	network 10.192.168.255
-	netmask 255.255.255.0
-	broadcast 10.192.168.255
+#auto eth2
+#iface eth2 inet static
+#	address 10.192.168.11
+#	network 10.192.168.255
+#	netmask 255.255.255.0
+#	broadcast 10.192.168.255
 
 #auto eth3
 #iface eth3 inet manual
