@@ -59,20 +59,27 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 
 * run the installation script
 
+```
     time chroot /mnt/ sh /opt/bootstrap/jessie/system/customized/sbin/run-once-stage.00.01-pre-user.sh
+```
 
 * chroot into the new installation
 
+```
     chroot /mnt
+```
 
 * you should see a coloured prompt, beginning with the word ``chroot''
 * install bootloader
 
+```
     aptitude install grub2
+```
 
 * leave chroot with CTRL+D or ``exit''
 * unmount devices in reverse order
 
+```
     umount /mnt/sys
     umount /mnt/proc
     umount /mnt/dev/pts
@@ -80,6 +87,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
     umount /mnt/boot
     umount /mnt/${foo}
     umount /mnt
+```
 
 * the new system should boot now
 
