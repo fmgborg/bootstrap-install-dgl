@@ -20,6 +20,12 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 ```
 * mount further devices, e.g. for /boot
 * note UUID(s) for fstab
+* clone this git repository
+```
+    cd /mnt/opt
+    git clone https://github.com/fmgborg/bootstrap-install-dgl.git
+    rsync -a /mnt/opt/bootstrap-install-dgl/bootstrap /mnt/opt/
+```
 * mount system devices (chrootenv on)
 ```
     mount --bind /dev /mnt/dev
