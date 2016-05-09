@@ -16,7 +16,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 * note UUID(s) for fstab
 * debootstrap
 
- debootstrap --arch amd64 jessie /mnt http://ftp.debian.org/debian
+  debootstrap --arch amd64 jessie /mnt http://ftp.debian.org/debian
 
 * mount further devices, e.g. for /boot
 * note UUID(s) for fstab
