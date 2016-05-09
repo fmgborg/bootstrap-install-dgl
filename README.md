@@ -75,6 +75,10 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
     umount /mnt/${foo}
     umount /mnt
 ```
+* for non German keyboard layouts there is no preconfiguration yet
+```
+    dpkg-reconfigure keyboard-configuration
+```
 * the new system should boot now
 
 ## More
