@@ -800,7 +800,8 @@ ${INSTALL} w3m # libgc1c2{a}
 ${INSTALL} make
 ${INSTALL} cpp # cpp-4.9{a} libcloog-isl4{a} libisl10{a} libmpc3{a} libmpfr4{a}
 
-#${INSTALL} .
+${INSTALL} molly-guard
+
 #${INSTALL} .
 #${INSTALL} .
 #${INSTALL} .
