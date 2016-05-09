@@ -76,7 +76,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
     aptitude install grub2
 ```
 
-* leave chroot with CTRL+D or ``exit''
+* leave chroot with CTRL+D or `exit`
 * unmount devices in reverse order
 
 ```
