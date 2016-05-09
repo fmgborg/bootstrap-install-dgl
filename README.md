@@ -22,10 +22,10 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 * note UUID(s) for fstab
 * mount system devices (chrootenv on)
 
- mount --bind /dev /mnt/dev
- mount --bind /dev/pts /mnt/dev/pts
- mount --bind /proc /mnt/prov
- mount --bind /sys /mnt/sys
+	mount --bind /dev /mnt/dev
+	mount --bind /dev/pts /mnt/dev/pts
+	mount --bind /proc /mnt/prov
+	mount --bind /sys /mnt/sys
 
 * choose an identifier for customization, e.g. foobar
 
