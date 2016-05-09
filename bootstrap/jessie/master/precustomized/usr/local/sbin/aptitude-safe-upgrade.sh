@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# 2016-03-23 14:22
+# date of creation :	2016-03-23 14:22
+# last modified :	2016-05-09 19:19
 
 # this script should run once or twice a day on average
 
@@ -20,12 +21,19 @@ if [ ! -d ${LOGPATH} ] ; then
         ${MKDIR} -p ${LOGPATH}
 fi
 
-NOW=`${DATE}`
+#NOW=`${DATE}`
+DEBVER="`${CAT} /etc/debian_version`"
+
 
 ${ECHO} -e ".\nStart"					2>&1 | tee -a ${LOGGING}
+NOW=`${DATE}`
 ${ECHO} ${NOW}						2>&1 | tee -a ${LOGGING}
+${ECHO} "Debian version : ${DEBVER}"			2>&1 | tee -a ${LOGGING}
 ${APTITUDE} update					2>&1 | tee -a ${LOGGING}
 ${APTITUDE} -y safe-upgrade				2>&1 | tee -a ${LOGGING}
+${ECHO} "Debian version : ${DEBVER}"			2>&1 | tee -a ${LOGGING}
+NOW=`${DATE}`
+${ECHO} ${NOW}						2>&1 | tee -a ${LOGGING}
 ${ECHO} -e ".\nStop"					2>&1 | tee -a ${LOGGING}
 
 # EOF
