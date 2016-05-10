@@ -917,11 +917,30 @@ echo
 # mta here
 f_add_mail() {
 #
+# default user sysadmin,
+ID=1000 ; u=sysadmin ; g=${u} ; addgroup --gid $ID $g ; adduser --gid $ID --uid $ID --disabled-password --gecos $u,13,23,42,666 $u
+#
+GROUPLIST_COMPLETE="adm audio cdrom dialout disk floppy kvm libvirt plugdev staff sudo video"
+G=${GROUPLIST_COMPLETE}
+for g in `echo ${G}` ; do echo -e "${g} : " ; grep ^${g} /etc/group ; echo ; done
+#
+GROUPLIST="adm audio cdrom dialout disk floppy plugdev staff sudo video"
+G=${GROUPLIST}
+for g in `echo ${G}` ; do echo -e "${g} : " ; grep ^${g} /etc/group ; echo ; done
+#
+for g in ${GROUPLIST} ; do adduser ${u} ${g} ; done
+#
 ${INSTALL} postfix
 ${INSTALL} procmail
+mv /etc/postfix/main.cf /etc/postfix/main.cf.orig
 LOCAL_FILE="/etc/postfix/main.cf"
-# todo
-#LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+#
+mv /etc/aliases /etc/aliases.orig
+LOCAL_FILE="/etc/aliases"
+LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+${POSTALIAS} /etc/aliases
+#
 ${INSTALL} at
 ${INSTALL} mutt # libtokyocabinet9{a}
 ${INSTALL} fetchmail

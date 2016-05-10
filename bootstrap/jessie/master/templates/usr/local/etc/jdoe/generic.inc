@@ -75,6 +75,7 @@ MKSWAP=`${WHICH} mkswap`
 MOUNT=`${WHICH} mount`
 MV=`${WHICH} mv`
 NTPDATE=`${WHICH} ntpdate`
+POSTALIAS=`${WHICH} postalias`
 RSYNC=`${WHICH} rsync`
 SED=`${WHICH} sed`
 SWAPOFF=`${WHICH} swapoff`
