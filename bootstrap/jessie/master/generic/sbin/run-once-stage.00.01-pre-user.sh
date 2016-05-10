@@ -915,9 +915,21 @@ echo
 }
 
 # mta here
-f_add_mta_postfix_atd_mutt() {
+f_add_mail() {
 #
 ${INSTALL} postfix
+${INSTALL} procmail
+LOCAL_FILE="/etc/postfix/main.cf"
+# todo
+#LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+${INSTALL} at
+${INSTALL} mutt # libtokyocabinet9{a}
+${INSTALL} fetchmail
+${INSTALL} getmail4
+${INSTALL} maildrop # courier-authlib{a} expect{a} libltdl7{a} tcl-expect{a} # recomm: tcl8.6 tk8.6
+${INSTALL} tcl8.6 tk8.6 # ... # recomm: ...
+${INSTALL} lbdb # libvformat0{a}
+#${INSTALL} .
 #
 }
 
@@ -953,6 +965,7 @@ ${INSTALL} monit
 stage_00_xy_mta_web_monitoring() {
 #
 f18_some_tools
+f_add_mail
 f_add_apache_munin_php5_phpsysinfo
 f_add_monit
 #
