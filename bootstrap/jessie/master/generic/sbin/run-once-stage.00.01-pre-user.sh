@@ -20,6 +20,8 @@ ECI=${EDIT_CONFIGURATION_INTERACTIVE}
 IPv4_PREFERRED="y"
 #IPv4_PREFERRED="n"
 
+DEFUSER="sysadmin"
+
 # Change INSTALL_RESSOURCES_PATH to your needs, but changes will appear
 # in different locations. Default is having bootstrap/ in /opt/ as shown
 # here.
@@ -918,6 +920,7 @@ echo
 f_add_mail() {
 #
 # default user sysadmin,
+# ${DEFUSER}
 ID=1000 ; u=sysadmin ; g=${u} ; addgroup --gid $ID $g ; adduser --gid $ID --uid $ID --disabled-password --gecos $u,13,23,42,666 $u
 #
 GROUPLIST_COMPLETE="adm audio cdrom dialout disk floppy kvm libvirt plugdev staff sudo video"
@@ -935,10 +938,12 @@ ${INSTALL} procmail
 mv /etc/postfix/main.cf /etc/postfix/main.cf.orig
 LOCAL_FILE="/etc/postfix/main.cf"
 LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+#c02_configfile
 #
 mv /etc/aliases /etc/aliases.orig
 LOCAL_FILE="/etc/aliases"
-LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+#LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+c02_configfile
 ${POSTALIAS} /etc/aliases
 #
 ${INSTALL} at
