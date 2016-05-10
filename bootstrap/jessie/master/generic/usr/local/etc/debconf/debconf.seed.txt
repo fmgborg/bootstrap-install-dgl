@@ -11,7 +11,7 @@ debconf	debconf/priority	select	medium
 
 #tzdata	tzdata/Zones/Etc	select	UTC
 tzdata	tzdata/Areas		select	Europe
-tzdata	tzdata/Zones/Europe     select	Berlin
+tzdata	tzdata/Zones/Europe	select	Berlin
 
 
 console-data	console-data/keymap/policy			select	Select keymap from arch list
