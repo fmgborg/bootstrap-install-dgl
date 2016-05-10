@@ -778,6 +778,7 @@ ${INSTALL} myspell-de-de myspell-en-us
 ${INSTALL} mtools
 ${INSTALL} dosfstools
 
+${INSTALL} whois
 ${INSTALL} telnet
 ${INSTALL} nmap # libblas-common{a} libblas3{a} libgfortran3{a} liblinear1{a} liblua5.2-0{a} libpcap0.8{a} libquadmath0{a} # recomm: ndiff
 #${INSTALL} ndiff # libpython-stdlib{a} libpython2.7-minimal{a} libpython2.7-stdlib{a} libxslt1.1{a} mime-support{a} python{a} python-lxml{a} python-minimal{a} python2.7{a} python2.7-minimal{a}
@@ -805,6 +806,12 @@ ${INSTALL} cpp # cpp-4.9{a} libcloog-isl4{a} libisl10{a} libmpc3{a} libmpfr4{a}
 
 ${INSTALL} molly-guard
 
+# https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-debian-7
+${INSTALL} fail2ban # # recomm: python-pyinotify
+${INSTALL} python-pyinotify
+
+#${INSTALL} .
+#${INSTALL} .
 #${INSTALL} .
 #${INSTALL} .
 #${INSTALL} .
@@ -859,7 +866,7 @@ echo --------------------------------------------------------------------------
 f17_skeleton
 echo --------------------------------------------------------------------------
 # check this if it belongs to stage.00.01-pre-user
-f18_some_tools
+#f18_some_tools
 echo --------------------------------------------------------------------------
 echo stage.00.01-pre-user
 echo --------------------------------------------------------------------------
@@ -907,10 +914,55 @@ echo --------------------------------------------------------------------------
 echo
 }
 
+# mta here
+f_add_mta_postfix_atd_mutt() {
+#
+${INSTALL} postfix
+#
+}
+
+# rkhunter unhide here
+## http://www.cyberciti.biz/tips/linux-unix-windows-find-hidden-processes-tcp-udp-ports.html
+
+f_add_apache_munin_php5_phpsysinfo() {
+${INSTALL} apache2 # apache2-bin{a} apache2-data{a} apache2-utils{a} libapr1{a} libaprutil1{a} libaprutil1-dbd-sqlite3{a} libaprutil1-ldap{a} liblua5.1-0{a}
+${INSTALL} munin # fonts-dejavu{a} fonts-dejavu-extra{a} libdate-manip-perl{a} libdbi1{a} libfile-copy-recursive-perl{a} libhtml-template-perl{a} libio-socket-inet6-perl{a} liblog-log4perl-perl{a} librrd4{a} librrds-perl{a} libsocket6-perl{a} liburi-perl{a} munin-common{a} rrdtool{a} # recomm: libcgi-fast-perl libipc-shareable-perl liblog-dispatch-perl munin-doc munin-node ### 15 newly installed
+${INSTALL} libcgi-fast-perl # libfcgi-perl{a}
+${INSTALL} libipc-shareable-perl 
+${INSTALL} liblog-dispatch-perl # libdevel-globaldestruction-perl{a} libdist-checkconflicts-perl{a} libmodule-implementation-perl{a} libmodule-runtime-perl{a} libparams-classify-perl{a} libparams-validate-perl{a} libsub-exporter-progressive-perl{a} libtry-tiny-perl{a} # recomm: libmail-sendmail-perl libmailtools-perl libmime-lite-perl
+${INSTALL} libmail-sendmail-perl # libsys-hostname-long-perl{a}
+${INSTALL} libmailtools-perl # libio-socket-ssl-perl{a} libnet-smtp-ssl-perl{a} libnet-ssleay-perl{a} libtimedate-perl{a} # recomm: libauthen-sasl-perl
+${INSTALL} libauthen-sasl-perl
+${INSTALL} libmime-lite-perl # libemail-date-format-perl{a} # recomm: libmime-types-perl
+${INSTALL} libmime-types-perl
+${INSTALL} munin-doc 
+${INSTALL} munin-node # gawk{a} libio-multiplex-perl{a} libnet-cidr-perl{a} libnet-server-perl{a} libsigsegv2{a} munin-plugins-core{a} # recomm: libnet-snmp-perl munin-plugins-extra
+${INSTALL} libnet-snmp-perl
+${INSTALL} munin-plugins-extra
+${INSTALL} php5 # libapache2-mod-php5{a} libonig2{a} libqdbm14{a} php5-cli{a} php5-common{a} php5-json{a} # recomm: php5-readline
+${INSTALL} php5-readline
+${INSTALL} phpsysinfo # php5-xsl{a}
+${INSTALL} apachetop # gamin{a} libadns1{a} libgamin0{a}
+}
+
+# https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-monit
+f_add_monit() {
+${INSTALL} monit
+}
+
+stage_00_xy_mta_web_monitoring() {
+#
+f18_some_tools
+f_add_apache_munin_php5_phpsysinfo
+f_add_monit
+#
+}
+
 # main programm
 
 stage_00_01_pre_user
 stage_00_02_kernel
 #stage_00_03_bootloader
+
 
 # EOF
