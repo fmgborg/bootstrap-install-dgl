@@ -12,6 +12,10 @@
 # By default this script does nothing.
 
 # fmg 2014-06-23 22:58
-/usr/local/sbin/boot.sh
+# fmg 2016-05-11 23:42
+BOOT_SH="/usr/local/sbin/boot.sh"
+if [ -x ${BOOT_SH} ] ; then
+	${BOOT_SH}
+fi
 # /fmg
 exit 0
