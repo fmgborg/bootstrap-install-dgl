@@ -812,6 +812,8 @@ ${INSTALL} molly-guard
 ${INSTALL} fail2ban # # recomm: python-pyinotify
 ${INSTALL} python-pyinotify
 
+${INSTALL} uuid-runtime
+
 #${INSTALL} .
 #${INSTALL} .
 #${INSTALL} .
