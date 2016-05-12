@@ -56,6 +56,10 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 ```
     time chroot /mnt/ sh /opt/bootstrap/jessie/system/customized/sbin/run-once-stage.00.01-pre-user.sh
 ```
+or to read the logfile later
+```
+    { time chroot /mnt/ sh /opt/bootstrap/jessie/system/customized/sbin/run-once-stage.00.01-pre-user.sh ; } 2>&1 | tee install.log
+```
 * chroot into the new installation
 ```
     chroot /mnt
