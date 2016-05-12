@@ -667,6 +667,8 @@ LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 if [ "${ECI}" = "y" ] ; then
 	crontab -e
 fi
+${CHMOD} 600 ${LF}
+${CHOWN} root:crontab ${LF}
 }
 
 f14_fuse() {
