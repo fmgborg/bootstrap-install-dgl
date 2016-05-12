@@ -937,7 +937,9 @@ for g in `echo ${G}` ; do echo -e "${g} : " ; grep ^${g} /etc/group ; echo ; don
 #
 for g in ${GROUPLIST} ; do adduser ${u} ${g} ; done
 #
-${INSTALL} postfix
+#${INSTALL} postfix
+PACKAGE="postfix"
+mf00_install
 ${INSTALL} procmail
 mv /etc/postfix/main.cf /etc/postfix/main.cf.orig
 LOCAL_FILE="/etc/postfix/main.cf"
