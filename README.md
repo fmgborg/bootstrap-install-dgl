@@ -46,6 +46,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
     vi /mnt/opt/bootstrap/jessie/system/customized/etc/network/interfaces
     vi /mnt/opt/bootstrap/jessie/system/customized/etc/fstab
     vi /mnt/opt/bootstrap/jessie/system/customized/etc/hostname
+    vi /mnt/opt/bootstrap/jessie/system/customized/etc/hosts
 ```
 * edit installation script (noninteractive or interactive)
 ```
