@@ -350,6 +350,11 @@ ${ECHO} -e "${fggreen}security upgrades done${normal}"
 f06_install_tools_l01_elementary() {
 #
 ${INSTALL} pwgen
+RANDOM_PW_FILE="/root/random_install_password"
+RANDOM_PW="`pwgen -1`"
+RANDOM_PW="${RANDOM_PW}`pwgen -1`"
+RANDOM_PW="${RANDOM_PW}`pwgen -1`"
+echo ${RANDOM_PW} > ${RANDOM_PW_FILE}
 #
 PACKAGE="cryptsetup"
 #${INSTALL} cryptsetup
