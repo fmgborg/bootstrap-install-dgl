@@ -349,6 +349,8 @@ ${ECHO} -e "${fggreen}security upgrades done${normal}"
 
 f06_install_tools_l01_elementary() {
 #
+${INSTALL} pwgen
+#
 PACKAGE="cryptsetup"
 #${INSTALL} cryptsetup
 mf00_install
