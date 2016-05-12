@@ -5,7 +5,7 @@
 # date:				2008-2015
 # this structure:		2015-10-05
 # install + reconfiguration:	2016-05-05
-# last modification:		2016-05-05
+# last modification:		2016-05-13
 
 PATH="${PATH}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
@@ -17,10 +17,15 @@ EDIT_CONFIGURATION_INTERACTIVE="n"
 #EDIT_CONFIGURATION_INTERACTIVE="undefined"
 ECI=${EDIT_CONFIGURATION_INTERACTIVE}
 
+# Change this to your network needs.
 IPv4_PREFERRED="y"
 #IPv4_PREFERRED="n"
 
+# Change this for shell user with role system administrator (NIY).
 DEFUSER="sysadmin"
+
+# Change this for the htaccess user (NIY).
+TMPUSER="tmpuser"
 
 # Change INSTALL_RESSOURCES_PATH to your needs, but changes will appear
 # in different locations. Default is having bootstrap/ in /opt/ as shown
