@@ -64,6 +64,7 @@ DEBCONF_SET_SELECTIONS=`${WHICH} debconf-set-selections`
 ECHO=`${WHICH} echo`
 FIND=`${WHICH} find`
 GIT=`${WHICH} git`
+GREP=`${WHICH} grep`
 IFCONFIG=`${WHICH} ifconfig`
 IP=`${WHICH} ip`
 IPTABLES=`${WHICH} iptables`
