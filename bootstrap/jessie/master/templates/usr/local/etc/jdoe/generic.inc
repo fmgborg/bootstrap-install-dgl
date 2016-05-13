@@ -81,6 +81,7 @@ SED=`${WHICH} sed`
 SWAPOFF=`${WHICH} swapoff`
 SWAPON=`${WHICH} swapon`
 RM=`${WHICH} rm`
+TEE=`${WHICH} tee`
 TOUCH=`${WHICH} touch`
 UMOUNT=`${WHICH} umount`
 UPDATE_ALTERNATIVES=`${WHICH} update-alternatives`
