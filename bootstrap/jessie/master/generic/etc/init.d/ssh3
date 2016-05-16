@@ -38,8 +38,8 @@ DAEMON_FILE="${SSH_ID}d"				# this is a patched binary with changed hardcoded pi
 DAEMON_NAME="${DAEMON_PATH}/${DAEMON_FILE}"		# default: /usr/local/sbin/ssh3d
 
 PRIVSEP_DIR="/var/run/sshd"				# ATTENTION : this is hardcoded
-#PID_DIR="/var/run/${DAEMON_FILE}" # not PATH but DIR	# default: /var/run/ssh3
-#PID_FILE="${PID_DIR}.pid"				# default: /var/run/ssh3d.pid
+PID_DIR="/var/run/${DAEMON_FILE}" # not PATH but DIR	# default: /var/run/ssh3
+PID_FILE="${PID_DIR}.pid"				# default: /var/run/ssh3d.pid
 							# if not set, pidfile will default to hardcoded deamon value
 check_conflict_pid
 DEFAULT_PATH="/etc/default"
