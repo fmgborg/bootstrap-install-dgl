@@ -11,7 +11,7 @@
 
 set -e
 
-# /etc/init.d/ssh4: start and stop the OpenBSD "secure shell(tm)" daemon 4th instance
+# /etc/init.d/ssh4: start and stop the OpenBSD "secure shell(tm)" daemon 2nd instance
 # Make sure it does not interfere with the regular ssh daemon
 # Don't forget to change ``Provides:'' when starting another instance at boot time via update-rc.d
 
@@ -37,8 +37,9 @@ DAEMON_PATH="/usr/local/sbin"
 DAEMON_FILE="${SSH_ID}d"				# this is a patched binary with changed hardcoded pidfile value
 DAEMON_NAME="${DAEMON_PATH}/${DAEMON_FILE}"		# default: /usr/local/sbin/ssh4d
 
-PID_DIR="/var/run/${DAEMON_FILE}" # not PATH but DIR	# default: /var/run/ssh4
-PID_FILE="${PID_DIR}.pid"				# default: /var/run/ssh4d.pid
+PRIVSEP_DIR="/var/run/sshd"				# ATTENTION : this is hardcoded
+#PID_DIR="/var/run/${DAEMON_FILE}" # not PATH but DIR	# default: /var/run/ssh4
+#PID_FILE="${PID_DIR}.pid"				# default: /var/run/ssh4d.pid
 							# if not set, pidfile will default to hardcoded deamon value
 check_conflict_pid
 DEFAULT_PATH="/etc/default"
@@ -103,9 +104,12 @@ check_dev_null() {
 
 check_privsep_dir() {
     # Create the PrivSep empty dir if necessary
-    if [ ! -d ${PID_DIR} ]; then
-	mkdir ${PID_DIR}
-	chmod 0755 ${PID_DIR}
+#    if [ ! -d ${PID_DIR} ]; then
+#	mkdir ${PID_DIR}
+#	chmod 0755 ${PID_DIR}
+    if [ ! -d ${PRIVSEP_DIR} ]; then
+	mkdir ${PRIVSEP_DIR}
+	chmod 0755 ${PRIVSEP_DIR}
     fi
 }
 
