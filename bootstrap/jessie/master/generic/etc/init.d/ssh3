@@ -11,7 +11,7 @@
 
 set -e
 
-# /etc/init.d/ssh3: start and stop the OpenBSD "secure shell(tm)" daemon 2nd instance
+# /etc/init.d/ssh3: start and stop the OpenBSD "secure shell(tm)" daemon 3rd instance
 # Make sure it does not interfere with the regular ssh daemon
 # Don't forget to change ``Provides:'' when starting another instance at boot time via update-rc.d
 
