@@ -1013,11 +1013,23 @@ f_add_monit
 #
 }
 
+# ----------------------------------------------------------------------
+
+special_stuff(){
+${INSTALL} firmware-bnx2					### from non-free
+${INSTALL} intel-microcode # iucode-tool{a}			### from non-free
+}
+
+# ----------------------------------------------------------------------
+
 # main programm
 
 stage_00_01_pre_user
 stage_00_02_kernel
 #stage_00_03_bootloader
+#stage_00_xy_mta_web_monitoring
 
+# depending on special hardware you should install some non-free stuff
+#special_stuff
 
 # EOF
