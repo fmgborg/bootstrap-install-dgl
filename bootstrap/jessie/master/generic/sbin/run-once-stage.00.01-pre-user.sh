@@ -419,7 +419,7 @@ mkdir ${LOOPBACKDIR}
 # no /etc/inittab in Debian Jessie anymore when using systemd-sysv
 #FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local issue issue.net motd"
 # but since we've installed sysvinit-core /etc/inittab is back
-FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local inittab issue issue.net motd"
+FILELIST="fstab crypttab hosts hostname network/interfaces shadow rc.local inittab issue issue.net motd modules"
 for i in `echo $FILELIST` ; do j="/etc/${i}" ; mv ${j} ${j}.orig ; cp -a ${j}.orig ${j} ; done
 find /etc/ -name "*.orig"
 #vi /etc/hostname
@@ -442,6 +442,11 @@ c02_configfile
 LOCAL_FILE="/etc/network/interfaces"
 #LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
 c02_configfile
+#
+LOCAL_FILE="/etc/modules"
+#LF=${LOCAL_FILE} && rsync -a "${IRP}${LF}" ${LF}
+c02_configfile
+#
 #echo --------------------------------------------------------------------------
 #
 LOCAL_FILE="/etc/inittab"
