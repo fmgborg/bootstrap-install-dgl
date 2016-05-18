@@ -16,7 +16,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 * note UUID(s) for fstab
 * debootstrap
 ```
-    debootstrap --arch amd64 jessie /mnt http://ftp.debian.org/debian
+    date ; time debootstrap --arch amd64 jessie /mnt http://ftp.debian.org/debian ; date
 ```
 * mount further devices, e.g. for /boot
 * note UUID(s) for fstab
@@ -24,7 +24,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 ```
     cd /mnt/opt
     git clone https://github.com/fmgborg/bootstrap-install-dgl.git
-    rsync -a /mnt/opt/bootstrap-install-dgl/bootstrap /mnt/opt/
+    date ; time rsync -a /mnt/opt/bootstrap-install-dgl/bootstrap /mnt/opt/ ; date
 ```
 * mount system devices (chrootenv on)
 ```
@@ -58,7 +58,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 ```
 or to read the logfile later
 ```
-    { time chroot /mnt/ sh /opt/bootstrap/jessie/system/customized/sbin/run-once-stage.00.01-pre-user.sh ; } 2>&1 | tee install.log
+    { date ; time chroot /mnt/ sh /opt/bootstrap/jessie/system/customized/sbin/run-once-stage.00.01-pre-user.sh ; date ; } 2>&1 | tee -a install.log
 ```
 * chroot into the new installation
 ```
@@ -72,7 +72,7 @@ or to read the logfile later
 ```
 * install bootloader
 ```
-    aptitude install grub2
+    aptitude install grub-pc # grub2
 ```
 * leave chroot with CTRL+D or `exit`
 * unmount devices in reverse order
