@@ -31,6 +31,8 @@ fi
 
 SSH_ID=${0##*/}						# service is identified by basename of this script
 #SSH_ID="ssh"						# comment or delete this line
+DELAY=`echo ${SSH_ID} | tr -d hs`			# use number of daemon as seconds
+sleep ${DELAY}
 check_conflict
 SCRIPT_NAME="/etc/init.d/${SSH_ID}"			# default: /etc/init.d/ssh3
 DAEMON_PATH="/usr/local/sbin"				
