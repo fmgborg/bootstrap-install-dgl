@@ -3,6 +3,7 @@
 # created:	2015-10-06 18:39
 # modified:	2016-03-02
 # modified:	2016-03-23 14:51	: aptitude + some foo
+# modified:	2016-05-19 21:40	: netstat, xl
 
 # No MAC prefix with Xen
 
@@ -75,6 +76,7 @@ MKFS_EXT3=`${WHICH} mkfs.ext3`
 MKSWAP=`${WHICH} mkswap`
 MOUNT=`${WHICH} mount`
 MV=`${WHICH} mv`
+NETSTAT=`${WHICH} netstat`
 NTPDATE=`${WHICH} ntpdate`
 POSTALIAS=`${WHICH} postalias`
 RSYNC=`${WHICH} rsync`
@@ -89,6 +91,8 @@ UPDATE_ALTERNATIVES=`${WHICH} update-alternatives`
 VGCHANGE=`${WHICH} vgchange`
 VIM=`${WHICH} vim`
 WC=`${WHICH} wc`
+XL=`${WHICH} xl`						# xen jessie
+XM=`${WHICH} xm`						# xen whezzy
 
 LOGPATH="/var/log/${CUSTOMIZATION}"
 LOGFILE="${CUSTOMIZATION}-generic.log"
