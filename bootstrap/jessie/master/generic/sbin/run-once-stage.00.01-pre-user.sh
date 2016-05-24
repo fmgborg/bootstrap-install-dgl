@@ -833,7 +833,9 @@ ${INSTALL} python-pyinotify
 
 ${INSTALL} uuid-runtime
 
-#${INSTALL} .
+# luit
+${INSTALL} x11.utils # libfontenc1{a} libxaw7{a} libxcb-shape0{a} libxmu6{a} libxpm4{a} libxt6{a} libxv1{a} libxxf86dga1{a}
+
 #${INSTALL} .
 #${INSTALL} .
 #${INSTALL} .
