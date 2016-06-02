@@ -5,7 +5,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 
 * Author: Frank Guthausen
 * License: GNU General Public License v2 (if no other license is mentioned)
-* this is a tool collection to create chroot environments, containers, bootable USB devices, virtual machines (e.g. KVM or Xen) and normal bootable installations for servers, desktops and laptos
+* this is a tool collection to create chroot environments, containers, bootable USB devices, virtual machines (e.g. KVM or Xen) and normal bootable installations for servers, desktops and laptops
 
 ## Usage: quick install amd64 (64bit) Debian jessie
 
