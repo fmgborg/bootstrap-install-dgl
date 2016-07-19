@@ -22,15 +22,17 @@ if [ ! -d ${LOGPATH} ] ; then
 fi
 
 #NOW=`${DATE}`
-DEBVER="`${CAT} /etc/debian_version`"
+#DEBVER="`${CAT} /etc/debian_version`"
 
 
 ${ECHO} -e ".\nStart"					2>&1 | tee -a ${LOGGING}
 NOW=`${DATE}`
 ${ECHO} ${NOW}						2>&1 | tee -a ${LOGGING}
+DEBVER="`${CAT} /etc/debian_version`"
 ${ECHO} "Debian version : ${DEBVER}"			2>&1 | tee -a ${LOGGING}
 ${APTITUDE} update					2>&1 | tee -a ${LOGGING}
 ${APTITUDE} -y safe-upgrade				2>&1 | tee -a ${LOGGING}
+DEBVER="`${CAT} /etc/debian_version`"
 ${ECHO} "Debian version : ${DEBVER}"			2>&1 | tee -a ${LOGGING}
 NOW=`${DATE}`
 ${ECHO} ${NOW}						2>&1 | tee -a ${LOGGING}
