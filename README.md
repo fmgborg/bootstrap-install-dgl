@@ -30,7 +30,7 @@ Install a pre-customized Debian GNU/Linux with debootstrap from scratch
 ```
     mount --bind /dev /mnt/dev
     mount --bind /dev/pts /mnt/dev/pts
-    mount --bind /proc /mnt/prov
+    mount --bind /proc /mnt/proc
     mount --bind /sys /mnt/sys
 ```
 * choose an identifier for customization, e.g. acme (ACME)
