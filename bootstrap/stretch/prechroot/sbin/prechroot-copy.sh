@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # 2015-10-08
+# 2018-04-02	# jessie -> stretch
 
 # safety lock
 RUN="n"
@@ -8,7 +9,7 @@ RUN="n"
 
 CHROOT_TARGET="/mnt"
 PRE_BOOTSTRAP="opt"
-REL_SOURCE="bootstrap/jessie/master/generic"
+REL_SOURCE="bootstrap/stretch/master/generic"
 FULL_SOURCE_PATH="${CHROOT_TARGET}/${PRE_BOOTSTRAP}/${REL_SOURCE}"
 FSP="${FULL_SOURCE_PATH}"
 FULL_TARGET_PATH="${CHROOT_TARGET}"
