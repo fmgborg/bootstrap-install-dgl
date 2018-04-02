@@ -1,0 +1,8 @@
+console-setup   console-setup/charmap47 select  ISO-8859-15
+console-setup   console-setup/codeset47 select  Guess optimal character set
+console-setup   console-setup/codesetcode       string  guess
+console-setup   console-setup/fontface47        select  Fixed
+console-setup   console-setup/fontsize  string  8x16
+console-setup   console-setup/fontsize-fb47     select  8x16
+console-setup   console-setup/fontsize-text47   select  8x16
+console-setup   console-setup/store_defaults_in_debconf_db      boolean true

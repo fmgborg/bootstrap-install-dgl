@@ -1,0 +1,13 @@
+#
+
+# Code::Blocks
+# http://apt.jenslody.de/
+# http://wiki.tuxbox.org/Benutzer:Tijuca
+#deb		http://apt.jenslody.de/testing jessie main
+#deb-src	http://apt.jenslody.de/testing jessie main
+
+# 2018-03-12
+# deb		http://apt.jenslody.de/stable stretch main
+# deb-src	http://apt.jenslody.de/stable stretch main
+
+#

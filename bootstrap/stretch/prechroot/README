@@ -1,0 +1,59 @@
+#
+
+Define your target ressources for the installation: hard disk, usb device,
+RAID, DRBD, crypto container as LUKS, LVM etc. and create the filesystems
+and swap space. Then mount the future rootfs to /mnt (you may change this
+only if you know what you're doing), create other mountpoints (mkdir) and
+mount all later needed/wanted filesystems where they belong.
+
+Done that you're ready to debootstrap the system. In addition to that, the
+script
+
+     bootstrap/jessie/prechroot/sbin/debootstrap.sh
+
+copies some useful files as .bash_history (initialization), .bashrc and the
+vim configuration into root's users' settings.  This is useful for a better
+workflow when you're inside the chroot environment.
+
+As a simpler version of this idea, the script
+
+     bootstrap/jessie/prechroot/sbin/prechroot-copy.sh 
+
+copies the files without debootstrap (you can use a debootstrap template
+from hard disk which is faster than network debootstrap). Be aware that
+the bootstrap toolchain is expected to be located in /opt/ and thus the
+full prechroot path is:
+
+     /opt/bootstrap/jessie/prechroot/
+
+The copy procedure copies the whole subtree /opt/bootstrap to /mnt/opt/bootstrap
+because it is needed to continue in the chroot environment. It can be used later
+to install a third system from the second and so forth.
+
+The next script with parameter 'on' prepares the chroot environment by mounting
+the system's directories - /dev /dev/pts /proc /sys - with option --bind to the
+corresponding locations in /mnt where they are needed:
+
+     /opt/bootstrap/jessie/master/generic/root/bin/chrootenv.sh on
+
+If you use a system which is installed by this method, the
+script is already available in /root/bin/ and you can run:
+
+     /root/bin/chrootenv.sh on
+
+Now you can 'chroot /mnt' into the chroot environment and continue as described
+in the bootstrap/README file. When you're done inside chroot, exit with CTRL+D
+and umount system's ressources with:
+
+     /opt/bootstrap/jessie/master/generic/root/bin/chrootenv.sh off
+
+If you use a system which is installed by this method, the
+script is already available in /root/bin/ and you can run:
+
+     /root/bin/chrootenv.sh off
+
+ATTENTION:
+Be aware that the software location in /opt and the chroot mount point /mnt
+both are hardcoded at several places. This might change in future versions.
+
+# EOF

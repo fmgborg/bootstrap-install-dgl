@@ -1,0 +1,21 @@
+#
+
+deb		http://ftp.debian.org/debian stretch main
+#deb		http://ftp.debian.org/debian stretch contrib
+#deb		http://ftp.debian.org/debian stretch non-free
+
+deb-src		http://ftp.debian.org/debian stretch main
+#deb-src	http://ftp.debian.org/debian stretch contrib
+#deb-src	http://ftp.debian.org/debian stretch non-free
+
+# security
+
+deb		http://security.debian.org/ stretch/updates main
+#deb		http://security.debian.org/ stretch/updates contrib
+#deb		http://security.debian.org/ stretch/updates non-free
+
+deb-src		http://security.debian.org/ stretch/updates main
+#deb-src	http://security.debian.org/ stretch/updates contrib
+#deb-src	http://security.debian.org/ stretch/updates non-free
+
+#

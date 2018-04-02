@@ -1,0 +1,12 @@
+#
+
+# nginx
+# http://nginx.org/en/linux_packages.html
+#deb		http://nginx.org/packages/debian/ jessie nginx
+#deb-src	http://nginx.org/packages/debian/ jessie nginx
+
+# 2018-03-12
+# deb		http://nginx.org/packages/debian/ stretch nginx
+# deb-src	http://nginx.org/packages/debian/ stretch nginx
+
+#

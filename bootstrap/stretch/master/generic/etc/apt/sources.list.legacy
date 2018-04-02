@@ -1,0 +1,48 @@
+#
+
+deb		http://ftp.debian.org/debian jessie main
+#deb		http://ftp.debian.org/debian jessie contrib
+#deb		http://ftp.debian.org/debian jessie non-free
+
+deb-src		http://ftp.debian.org/debian jessie main
+#deb-src	http://ftp.debian.org/debian jessie contrib
+#deb-src	http://ftp.debian.org/debian jessie non-free
+
+# security
+
+#deb		http://security.debian.org/ jessie/updates main
+#deb		http://security.debian.org/ jessie/updates contrib
+#deb		http://security.debian.org/ jessie/updates non-free
+
+#deb-src	http://security.debian.org/ jessie/updates main
+#deb-src	http://security.debian.org/ jessie/updates contrib
+#deb-src	http://security.debian.org/ jessie/updates non-free
+
+#
+
+# Code::Blocks
+# http://apt.jenslody.de/
+# http://wiki.tuxbox.org/Benutzer:Tijuca
+#deb		http://apt.jenslody.de/testing jessie main
+#deb-src	http://apt.jenslody.de/testing jessie main
+
+# nginx
+# http://nginx.org/en/linux_packages.html
+#deb		http://nginx.org/packages/debian/ jessie nginx
+#deb-src	http://nginx.org/packages/debian/ jessie nginx
+
+# x2go
+# http://wiki.x2go.org/doku.php/wiki:repositories:debian
+#deb		http://packages.x2go.org/debian jessie main
+#deb-src	http://packages.x2go.org/debian jessie main
+
+# ProxMox VE
+# http://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_Wheezy
+
+# Owncloud
+# opensuse
+
+# ZFS
+# http://zfsonlinux.org/debian.html
+
+#

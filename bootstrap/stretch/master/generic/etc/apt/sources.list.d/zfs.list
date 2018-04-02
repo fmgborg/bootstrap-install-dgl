@@ -1,0 +1,20 @@
+#
+
+# ZFS
+# http://zfsonlinux.org/debian.html
+# https://www.howtoforge.com/tutorial/how-to-install-and-configure-zfs-on-debian-8-jessie/
+
+# This is copied from : dpkg -i zfsonlinux_6_all.deb
+# Q : is the wheezy repository the valid one for jessie?
+
+#deb [arch=amd64]	http://archive.zfsonlinux.org/debian wheezy main
+#deb-src		http://archive.zfsonlinux.org/debian wheezy main
+
+# !! Enable these ONLY if you want/need the dailies - latest ZoL code !!
+#deb [arch=amd64]	http://archive.zfsonlinux.org/debian wheezy-daily main
+#deb-src		http://archive.zfsonlinux.org/debian wheezy-daily main
+
+# 2018-03-12
+# Debian stretch: zfs in in Debin repository contrib
+
+#

@@ -1,0 +1,2 @@
+debconf	debconf/frontend	select	Dialog
+debconf	debconf/priority	select	medium
