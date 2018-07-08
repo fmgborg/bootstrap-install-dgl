@@ -36,7 +36,8 @@ fi
 #alias vless='vim -u /usr/share/vim/vim71/macros/less.vim'							# Lenny
 #alias vless='vim -u /usr/share/vim/vim72/macros/less.vim'							# Squeeze
 #alias vless='vim -u /usr/share/vim/vim73/macros/less.vim'							# Wheezy
-alias vless='vim -u /usr/share/vim/vim74/macros/less.vim'							# Jessie
+#alias vless='vim -u /usr/share/vim/vim74/macros/less.vim'							# Jessie
+alias vless='vim -u /usr/share/vim/vim80/macros/less.vim'							# Stretch
 
 # colored prompt
 PS1ORIG=${PS1}
