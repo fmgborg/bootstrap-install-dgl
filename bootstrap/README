@@ -7,6 +7,10 @@ If you want to do a clean debootstrap, follow the instructions in
 to prepare the chroot environment with a debootstrap
 via network or copy/rsync it from a prepared template.
 
+Update 2018-04-02: same procedure holds for Debian Stretch:
+
+     bootstrap/stretch/prechroot/README
+
 #--
 
 The following instructions are supposed to run in the chroot environment.
