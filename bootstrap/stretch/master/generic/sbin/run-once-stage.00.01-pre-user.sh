@@ -800,6 +800,7 @@ ${INSTALL} mc # mc-data{a}
 ${INSTALL} kpartx
 ${INSTALL} parted # libparted2{a}
 ${INSTALL} -s gpart testdisk
+${INSTALL} -s gdisk
 
 ${INSTALL} pciutils # libpci3{a}
 ${INSTALL} usbutils # libusb-1.0-0{a}
